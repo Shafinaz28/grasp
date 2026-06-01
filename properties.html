@@ -193,6 +193,25 @@ p, a, li, span, button, label { font-family: var(--font-body); }
   background: #242d63; color: #fff;
 }
 .menu-social-links a:hover { background: #cd7f2f; }
+.site-footer {
+  background: #242d63;
+  color: #ffffff;
+  border-top: none;
+}
+.site-footer .footer-logo { filter: brightness(0) invert(1); }
+.site-footer h3 { color: #ffffff; }
+.site-footer p, .site-footer li, .site-footer span { color: rgba(255, 255, 255, 0.85); }
+.site-footer a { color: rgba(255, 255, 255, 0.85); transition: color 0.25s ease; }
+.site-footer a:hover { color: #cd7f2f; }
+.site-footer .footer-divider { border-color: rgba(255, 255, 255, 0.15); }
+.site-footer .footer-copy { color: rgba(255, 255, 255, 0.55); }
+.site-footer .footer-social a {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+.site-footer .footer-social a:hover { background: #cd7f2f; color: #ffffff; }
+.menu-panel-logo { display: inline-flex; align-items: center; flex-shrink: 0; }
+.menu-panel-logo img { height: clamp(3rem, 8vw, 4.5rem); width: auto; object-fit: contain; }
 
 .page-main { padding-top: 125px; }
 .page-banner {
@@ -586,18 +605,18 @@ p, a, li, span, button, label { font-family: var(--font-body); }
     </div>
   </main>
 
-  <footer class="bg-white text-brandBlue font-sans border-t border-gray-200">
+  <footer class="site-footer font-sans">
     <div class="site-shell py-16">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
         <div>
-          <img src="./logo/grasp-logo.png" alt="GRASP Realtors Logo" class="h-20 w-auto mb-5 object-contain" />
-          <p class="text-brandBlue/80 leading-7 mb-6">
+          <img src="./logo/grasp-logo.png" alt="GRASP Realtors Logo" class="footer-logo h-20 w-auto mb-5 object-contain" />
+          <p class="leading-7 mb-6">
             GRASP Realtors helps you find verified properties with transparent guidance, smart location insights, and professional real estate support.
           </p>
         </div>
         <div>
-          <h3 class="text-xl font-serifBrand mb-6 text-brandBlue font-semibold">Quick Links</h3>
-          <ul class="space-y-4 text-brandBlue">
+          <h3 class="text-xl font-serifBrand mb-6 font-semibold">Quick Links</h3>
+          <ul class="space-y-4">
             <li><a href="index.html" class="hover:text-brandGold transition">Home</a></li>
             <li><a href="about.html" class="hover:text-brandGold transition">About</a></li>
             <li><a href="properties.html" class="hover:text-brandGold transition">Properties</a></li>
@@ -606,8 +625,8 @@ p, a, li, span, button, label { font-family: var(--font-body); }
           </ul>
         </div>
         <div>
-          <h3 class="text-xl font-serifBrand mb-6 text-brandBlue font-semibold">Our Services</h3>
-          <ul class="space-y-4 text-brandBlue">
+          <h3 class="text-xl font-serifBrand mb-6 font-semibold">Our Services</h3>
+          <ul class="space-y-4">
             <li><a href="properties.html" class="hover:text-brandGold transition">Property Buying</a></li>
             <li><a href="properties.html" class="hover:text-brandGold transition">Property Selling</a></li>
             <li><a href="properties.html" class="hover:text-brandGold transition">Investment Guidance</a></li>
@@ -616,20 +635,21 @@ p, a, li, span, button, label { font-family: var(--font-body); }
           </ul>
         </div>
         <div>
-          <h3 class="text-xl font-serifBrand mb-6 text-brandBlue font-semibold">Contact Us</h3>
-          <ul class="space-y-5 text-brandBlue">
-            <li class="flex gap-3"><i class="fa-solid fa-location-dot text-brandGold mt-1"></i><span>Bangalore, Karnataka</span></li>
-            <li class="flex gap-3"><i class="fa-solid fa-phone text-brandGold mt-1"></i><a href="tel:+918884858116" class="hover:text-brandGold transition">+91 88848 58116</a></li>
-            <li class="flex gap-3"><i class="fa-solid fa-envelope text-brandGold mt-1"></i><a href="mailto:info@grasp.com" class="hover:text-brandGold transition">info@grasp.com</a></li>
+          <h3 class="text-xl font-serifBrand mb-6 font-semibold">Contact Us</h3>
+          <ul class="space-y-5">
+            <li class="flex gap-3"><i class="fa-solid fa-location-dot text-brandGold mt-1"></i><span>#15, 4th B Main Road, Nagarbhavi Main Road<br />Kalyan Nagar, Bangalore, Karnataka 560040<br />India</span></li>
+            <li class="flex gap-3"><i class="fa-solid fa-phone text-brandGold mt-1"></i><a href="tel:+917996363331" class="hover:text-brandGold transition">+91 79963 63331</a></li>
+            <li class="flex gap-3"><i class="fa-solid fa-envelope text-brandGold mt-1"></i><a href="mailto:info@grasprealtors.com" class="hover:text-brandGold transition">info@grasprealtors.com</a></li>
           </ul>
-          <div class="flex gap-4 mt-6">
-            <a href="#" class="w-10 h-10 bg-brandBlue text-white flex items-center justify-center hover:bg-brandGold transition" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#" class="w-10 h-10 bg-brandBlue text-white flex items-center justify-center hover:bg-brandGold transition" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" class="w-10 h-10 bg-brandBlue text-white flex items-center justify-center hover:bg-brandGold transition" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <div class="footer-social flex gap-4 mt-6">
+            <a href="https://www.instagram.com/grasprealtors/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 flex items-center justify-center transition" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/share/1BEY3osQYy/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 flex items-center justify-center transition" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com/company/grasprealtors" target="_blank" rel="noopener noreferrer" class="w-10 h-10 flex items-center justify-center transition" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://www.youtube.com/@grasprealtors" target="_blank" rel="noopener noreferrer" class="w-10 h-10 flex items-center justify-center transition" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
           </div>
         </div>
       </div>
-      <div class="border-t border-gray-200 mt-12 pt-6 flex flex-col md:flex-row justify-between gap-4 text-brandBlue/70 text-sm">
+      <div class="footer-divider border-t mt-12 pt-6 flex flex-col md:flex-row justify-between gap-4 footer-copy text-sm">
         <p>© 2026 GRASP Realtors. All Rights Reserved.</p>
         <p>Designed for premium real estate experiences.</p>
       </div>
@@ -643,7 +663,9 @@ p, a, li, span, button, label { font-family: var(--font-body); }
       </div>
       <div id="menuPanel" class="min-h-full bg-white text-brandBlue px-7 md:px-12 py-10 md:py-14 translate-x-full transition-transform duration-500 ease-in-out overflow-y-auto">
         <div class="flex items-center justify-between mb-8">
-          <span class="text-brandGold tracking-[4px] font-bold uppercase">GRASP</span>
+          <a href="index.html" class="menu-panel-logo" aria-label="GRASP Realtors home">
+            <img src="./logo/grasp-logo.png" alt="GRASP Realtors" />
+          </a>
           <button id="menuClose" class="text-3xl leading-none text-brandBlue hover:text-brandGold transition" aria-label="Close menu">&times;</button>
         </div>
         <ul class="space-y-1">
@@ -657,9 +679,10 @@ p, a, li, span, button, label { font-family: var(--font-body); }
         <div class="menu-social">
           <p class="menu-social-label">Follow Us</p>
           <div class="menu-social-links">
-            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/grasprealtors/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/share/1BEY3osQYy/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com/company/grasprealtors" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://www.youtube.com/@grasprealtors" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
           </div>
         </div>
       </div>
