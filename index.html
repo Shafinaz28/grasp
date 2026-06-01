@@ -177,6 +177,102 @@
       background: #0e1430;
     }
 
+    body.is-loading {
+      overflow: hidden;
+    }
+
+    .page-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+
+    .page-loader.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .page-loader-inner {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .page-loader-ring {
+      position: relative;
+      width: clamp(7.5rem, 22vw, 10rem);
+      height: clamp(7.5rem, 22vw, 10rem);
+      margin: 0 auto 1.5rem;
+    }
+
+    .page-loader-ring::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 2px solid rgba(36, 45, 99, 0.12);
+      border-top-color: #242d63;
+      border-right-color: #cd7f2f;
+      animation: loaderSpin 0.9s linear infinite;
+    }
+
+    .page-loader-logo {
+      position: absolute;
+      inset: 50% auto auto 50%;
+      width: clamp(5.5rem, 18vw, 8rem);
+      height: auto;
+      transform: translate(-50%, -50%);
+      object-fit: contain;
+      animation: loaderLogoPulse 1.4s ease-in-out infinite;
+    }
+
+    @keyframes loaderSpin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes loaderLogoPulse {
+      0%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 0.88; transform: translate(-50%, -50%) scale(1.05); }
+    }
+
+    .page-loader-bar {
+      width: min(240px, 72vw);
+      height: 3px;
+      margin: 0 auto;
+      background: #eef1fa;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .page-loader-bar span {
+      display: block;
+      height: 100%;
+      width: 42%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #242d63, #cd7f2f, #242d63);
+      animation: loaderBarSlide 1.15s ease-in-out infinite;
+    }
+
+    @keyframes loaderBarSlide {
+      0% { transform: translateX(-130%); }
+      100% { transform: translateX(330%); }
+    }
+
+    .page-loader-text {
+      margin-top: 1.25rem;
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(36, 45, 99, 0.55);
+    }
+
     .hero-video {
       pointer-events: none;
     }
@@ -1181,7 +1277,17 @@
   </style>
 </head>
 
-<body class="has-hero bg-white font-serifBrand">
+<body class="has-hero bg-white font-serifBrand is-loading">
+
+  <div id="pageLoader" class="page-loader" role="status" aria-live="polite" aria-label="Loading website">
+    <div class="page-loader-inner">
+      <div class="page-loader-ring">
+        <img src="./logo/grasp-logo.png" alt="" class="page-loader-logo" width="160" height="80" />
+      </div>
+      <div class="page-loader-bar" aria-hidden="true"><span></span></div>
+      <p class="page-loader-text">Loading experience</p>
+    </div>
+  </div>
 
   <!-- NAVBAR — hide on scroll down, show on scroll up -->
   <header
@@ -1238,31 +1344,6 @@
       ></video>
 
       <div class="hero-video-overlay absolute inset-0 z-[1]" aria-hidden="true"></div>
-
-      <script>
-        (function () {
-          var v = document.getElementById("heroVideo");
-          if (!v) return;
-          var primary = "./video/13240171_1920_1080_60fps.mp4";
-          var fallback = "./video/herovideo.mp4";
-          function playHero() {
-            v.play().catch(function () {});
-          }
-          v.preload = "auto";
-          if (!v.getAttribute("src")) v.src = primary;
-          v.load();
-          if (v.readyState >= 2) playHero();
-          v.addEventListener("loadeddata", playHero, { once: true });
-          v.addEventListener("canplay", playHero, { once: true });
-          v.addEventListener("error", function () {
-            if (v.dataset.fallbackUsed) return;
-            v.dataset.fallbackUsed = "1";
-            v.src = fallback;
-            v.load();
-            playHero();
-          }, { once: true });
-        })();
-      </script>
 
       <div class="relative z-[2] w-full px-6 pt-[120px] pb-16 max-w-5xl mx-auto">
         <p class="section-kicker mb-4">Luxury Properties Across Bangalore</p>
@@ -3059,6 +3140,78 @@
       if (typeof ScrollTrigger !== "undefined") ScrollTrigger.refresh();
     });
 
+  </script>
+
+  <script>
+    (function () {
+      var v = document.getElementById("heroVideo");
+      var loader = document.getElementById("pageLoader");
+      var primary = "./video/13240171_1920_1080_60fps.mp4";
+      var fallback = "./video/herovideo.mp4";
+      var minShowMs = 900;
+      var maxWaitMs = 10000;
+      var startedAt = Date.now();
+      var loaderDone = false;
+
+      function playHero() {
+        if (!v) return;
+        v.play().catch(function () {});
+      }
+
+      function hideLoader() {
+        if (loaderDone) return;
+        loaderDone = true;
+        var delay = Math.max(0, minShowMs - (Date.now() - startedAt));
+        setTimeout(function () {
+          document.body.classList.remove("is-loading");
+          if (loader) {
+            loader.classList.add("is-hidden");
+            loader.setAttribute("aria-hidden", "true");
+            setTimeout(function () {
+              if (loader.parentNode) loader.parentNode.removeChild(loader);
+            }, 650);
+          }
+        }, delay);
+      }
+
+      function onHeroReady() {
+        playHero();
+        hideLoader();
+      }
+
+      if (v) {
+        v.preload = "auto";
+        if (!v.getAttribute("src")) v.src = primary;
+        v.load();
+
+        if (v.readyState >= 3) {
+          onHeroReady();
+        } else {
+          v.addEventListener("canplay", onHeroReady, { once: true });
+          v.addEventListener("playing", onHeroReady, { once: true });
+          v.addEventListener("loadeddata", playHero, { once: true });
+          v.addEventListener("error", function () {
+            if (v.dataset.fallbackUsed) {
+              hideLoader();
+              return;
+            }
+            v.dataset.fallbackUsed = "1";
+            v.src = fallback;
+            v.load();
+            v.addEventListener("canplay", onHeroReady, { once: true });
+            v.addEventListener("playing", onHeroReady, { once: true });
+            playHero();
+          }, { once: true });
+        }
+      } else {
+        hideLoader();
+      }
+
+      setTimeout(hideLoader, maxWaitMs);
+      window.addEventListener("load", function () {
+        if (!loaderDone && v && v.readyState >= 2) onHeroReady();
+      });
+    })();
   </script>
 
 </body>
