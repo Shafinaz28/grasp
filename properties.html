@@ -346,6 +346,14 @@ p, a, li, span, button, label { font-family: var(--font-body); }
   text-transform: uppercase;
   color: #242d63;
 }
+.prop-card-title-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+.prop-card-title-link:hover { color: #cd7f2f; }
+.prop-inquire-btn { text-decoration: none; color: #242d63 !important; }
+.prop-inquire-btn:hover { background: #cd7f2f !important; color: #fff !important; }
 .prop-amenities {
   list-style: none;
   margin: 0 0 1.15rem;
@@ -462,149 +470,63 @@ p, a, li, span, button, label { font-family: var(--font-body); }
           <span>/</span>
           <span>Properties</span>
         </nav>
-        <h1>Our Properties</h1>
-        <p>Browse verified homes, plots, and commercial spaces across Bangalore — curated by the GRASP team.</p>
+        <h1>Our Projects</h1>
+        <p>NVG Seattle, NVG Nippon, and Sambhav Buloke — curated by GRASP Realtors.</p>
       </div>
     </div>
 
     <section class="page-section soft">
       <div class="site-shell">
         <div class="text-center max-w-2xl mx-auto mb-8">
-          <p class="section-kicker mb-3">Listings</p>
-          <h2 class="section-title">Explore Featured <em>Properties</em></h2>
+          <p class="section-kicker mb-3">Portfolio</p>
+          <h2 class="section-title">Three Featured <em>Projects</em></h2>
         </div>
-
-        <div class="prop-filters" role="tablist" aria-label="Filter properties">
-          <button type="button" class="prop-filter-btn is-active" data-filter="all">All</button>
-          <button type="button" class="prop-filter-btn" data-filter="residential">Residential</button>
-          <button type="button" class="prop-filter-btn" data-filter="commercial">Commercial</button>
-        </div>
-
         <div class="prop-cards-grid" id="propertiesGrid">
-
           <article class="prop-card" data-category="residential">
             <div class="prop-card-media">
-              <img src="./image/project-1.jpg" alt="Premium Villa Plots" onerror="this.src='https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80'" />
-              <span class="prop-badge prop-badge-featured">Featured</span>
+              <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80" alt="NVG Seattle" />
+              <span class="prop-badge prop-badge-offer">Pre-Launch</span>
             </div>
             <div class="prop-card-body">
-              <p class="prop-location"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> North Bangalore</p>
-              <h3 class="prop-card-title">Premium Villa Plots Near Green Belt</h3>
+              <p class="prop-location"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> North Bangalore Growth Corridor</p>
+              <h3 class="prop-card-title">NVG Seattle · NVG Lifestyle</h3>
               <ul class="prop-amenities">
-                <li><i class="fa-solid fa-bed" aria-hidden="true"></i> 4 Beds</li>
-                <li><i class="fa-solid fa-bath" aria-hidden="true"></i> 3 Bath</li>
-                <li><i class="fa-solid fa-ruler-combined" aria-hidden="true"></i> 2400 Sq.ft</li>
+                <li><i class="fa-solid fa-building" aria-hidden="true"></i> High-Rise</li>
+                <li><i class="fa-solid fa-chart-line" aria-hidden="true"></i> Pre-Launch EOI</li>
+                <li><i class="fa-solid fa-indian-rupee-sign" aria-hidden="true"></i> ₹1L Refundable</li>
               </ul>
-              <div class="prop-card-footer">
-                <p class="prop-price"><span class="prop-price-amount">₹ 48 L*</span><span class="prop-price-period">onwards</span></p>
-                <button type="button" class="prop-fav-btn" aria-label="Save property"><i class="fa-regular fa-heart"></i></button>
-              </div>
             </div>
           </article>
-
           <article class="prop-card" data-category="residential">
             <div class="prop-card-media">
-              <img src="./image/luxury-apartment.jpg" alt="Luxury Apartments" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=800';" />
-              <span class="prop-badge prop-badge-offer">20% Off</span>
+              <img src="./image/nvgnippon.png" alt="NVG Nippon — KIADB, Bangalore" />
+              <span class="prop-badge prop-badge-offer">Pre-Launch</span>
             </div>
             <div class="prop-card-body">
-              <p class="prop-location"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Whitefield</p>
-              <h3 class="prop-card-title">Luxury 2 &amp; 3 BHK Apartments</h3>
+              <p class="prop-location"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> KIADB · Opposite SAP Campus</p>
+              <h3 class="prop-card-title">NVG Nippon</h3>
               <ul class="prop-amenities">
-                <li><i class="fa-solid fa-bed" aria-hidden="true"></i> 3 Beds</li>
-                <li><i class="fa-solid fa-bath" aria-hidden="true"></i> 2 Bath</li>
-                <li><i class="fa-solid fa-ruler-combined" aria-hidden="true"></i> 1850 Sq.ft</li>
+                <li><i class="fa-solid fa-bed" aria-hidden="true"></i> 2 &amp; 3 BHK</li>
+                <li><i class="fa-solid fa-ruler-combined" aria-hidden="true"></i> 1100–1800 sq.ft</li>
+                <li><i class="fa-solid fa-building" aria-hidden="true"></i> 360+ Units</li>
               </ul>
-              <div class="prop-card-footer">
-                <p class="prop-price"><span class="prop-price-amount">₹ 72 L*</span><span class="prop-price-period">onwards</span></p>
-                <button type="button" class="prop-fav-btn" aria-label="Save property"><i class="fa-regular fa-heart"></i></button>
-              </div>
             </div>
           </article>
-
-          <article class="prop-card" data-category="commercial">
-            <div class="prop-card-media">
-              <img src="./image/project-3.jpg" alt="Commercial Spaces" onerror="this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80'" />
-              <span class="prop-badge prop-badge-featured">Featured</span>
-            </div>
-            <div class="prop-card-body">
-              <p class="prop-location"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Electronic City</p>
-              <h3 class="prop-card-title">Prime Commercial Office Spaces</h3>
-              <ul class="prop-amenities">
-                <li><i class="fa-solid fa-building" aria-hidden="true"></i> Office</li>
-                <li><i class="fa-solid fa-car" aria-hidden="true"></i> Parking</li>
-                <li><i class="fa-solid fa-ruler-combined" aria-hidden="true"></i> 3200 Sq.ft</li>
-              </ul>
-              <div class="prop-card-footer">
-                <p class="prop-price"><span class="prop-price-amount">₹ 1.2 Cr*</span><span class="prop-price-period">onwards</span></p>
-                <button type="button" class="prop-fav-btn" aria-label="Save property"><i class="fa-regular fa-heart"></i></button>
-              </div>
-            </div>
-          </article>
-
           <article class="prop-card" data-category="residential">
             <div class="prop-card-media">
-              <img
-                src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80"
-                alt="Independent Villa"
-                onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80';"
-              />
-              <span class="prop-badge prop-badge-featured">New</span>
+              <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80" alt="Sambhav × Buloke — North Bengaluru" />
+              <span class="prop-badge prop-badge-offer">Upcoming</span>
             </div>
             <div class="prop-card-body">
-              <p class="prop-location"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Sarjapur Road</p>
-              <h3 class="prop-card-title">Independent 4 BHK Villa With Garden</h3>
+              <p class="prop-location"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> North Bengaluru · Bettahalasoor &amp; Devanahalli</p>
+              <h3 class="prop-card-title">Buloke Sambhav</h3>
               <ul class="prop-amenities">
-                <li><i class="fa-solid fa-bed" aria-hidden="true"></i> 4 Beds</li>
-                <li><i class="fa-solid fa-bath" aria-hidden="true"></i> 4 Bath</li>
-                <li><i class="fa-solid fa-ruler-combined" aria-hidden="true"></i> 3200 Sq.ft</li>
+                <li><i class="fa-solid fa-building" aria-hidden="true"></i> ~115 Premium Units</li>
+                <li><i class="fa-solid fa-city" aria-hidden="true"></i> Apartments &amp; Plots</li>
+                <li><i class="fa-solid fa-leaf" aria-hidden="true"></i> Green &amp; Sustainable</li>
               </ul>
-              <div class="prop-card-footer">
-                <p class="prop-price"><span class="prop-price-amount">₹ 1.8 Cr*</span><span class="prop-price-period">onwards</span></p>
-                <button type="button" class="prop-fav-btn" aria-label="Save property"><i class="fa-regular fa-heart"></i></button>
-              </div>
             </div>
           </article>
-
-          <article class="prop-card" data-category="residential">
-            <div class="prop-card-media">
-              <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=800&q=80" alt="Studio Apartments" />
-            </div>
-            <div class="prop-card-body">
-              <p class="prop-location"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> HSR Layout</p>
-              <h3 class="prop-card-title">Modern Studio &amp; 1 BHK Rentals</h3>
-              <ul class="prop-amenities">
-                <li><i class="fa-solid fa-bed" aria-hidden="true"></i> 1 Bed</li>
-                <li><i class="fa-solid fa-bath" aria-hidden="true"></i> 1 Bath</li>
-                <li><i class="fa-solid fa-ruler-combined" aria-hidden="true"></i> 650 Sq.ft</li>
-              </ul>
-              <div class="prop-card-footer">
-                <p class="prop-price"><span class="prop-price-amount">₹ 28 K</span><span class="prop-price-period">/ month</span></p>
-                <button type="button" class="prop-fav-btn" aria-label="Save property"><i class="fa-regular fa-heart"></i></button>
-              </div>
-            </div>
-          </article>
-
-          <article class="prop-card" data-category="commercial">
-            <div class="prop-card-media">
-              <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80" alt="Retail Space" />
-              <span class="prop-badge prop-badge-offer">Hot</span>
-            </div>
-            <div class="prop-card-body">
-              <p class="prop-location"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> MG Road</p>
-              <h3 class="prop-card-title">High Street Retail &amp; Showroom Space</h3>
-              <ul class="prop-amenities">
-                <li><i class="fa-solid fa-store" aria-hidden="true"></i> Retail</li>
-                <li><i class="fa-solid fa-car" aria-hidden="true"></i> Parking</li>
-                <li><i class="fa-solid fa-ruler-combined" aria-hidden="true"></i> 1800 Sq.ft</li>
-              </ul>
-              <div class="prop-card-footer">
-                <p class="prop-price"><span class="prop-price-amount">₹ 95 L*</span><span class="prop-price-period">onwards</span></p>
-                <button type="button" class="prop-fav-btn" aria-label="Save property"><i class="fa-regular fa-heart"></i></button>
-              </div>
-            </div>
-          </article>
-
         </div>
       </div>
     </section>
@@ -782,20 +704,6 @@ p, a, li, span, button, label { font-family: var(--font-body); }
     });
   });
 
-  document.querySelectorAll(".prop-filter-btn").forEach(function (filterBtn) {
-    filterBtn.addEventListener("click", function () {
-      var filter = filterBtn.getAttribute("data-filter");
-      document.querySelectorAll(".prop-filter-btn").forEach(function (b) {
-        b.classList.remove("is-active");
-      });
-      filterBtn.classList.add("is-active");
-      document.querySelectorAll(".prop-card").forEach(function (card) {
-        var cat = card.getAttribute("data-category");
-        var show = filter === "all" || cat === filter;
-        card.classList.toggle("is-hidden", !show);
-      });
-    });
-  });
 })();
   </script>
 </body>
