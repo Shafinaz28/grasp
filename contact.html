@@ -84,12 +84,14 @@ p, a, li, span, button, input, textarea, label { font-family: var(--font-body); 
 .site-shell { width: 100%; max-width: 1240px; margin-inline: auto; padding-inline: clamp(1rem, 4vw, 2.5rem); }
 @media (max-width: 767px) {
   .site-shell { padding-inline: 1rem; }
-  #navbar { height: 88px !important; }
-  #navbar a img { height: 58px !important; }
+  #navbar { height: 100px !important; }
+  #navbar a img { height: 76px !important; }
   #menuToggle { width: 30px !important; height: 22px !important; }
-  .page-main { padding-top: 88px !important; }
+  .page-main { padding-top: 100px !important; }
 }
 @media (max-width: 1023px) {
+  #navbar { height: 100px !important; }
+  #navbar a img { height: 76px !important; }
   #navbar .site-shell { position: relative; }
   #navbar .navbar-logo {
     position: static !important;
@@ -156,8 +158,10 @@ p, a, li, span, button, input, textarea, label { font-family: var(--font-body); 
   background: #cd7f2f;
   color: #ffffff !important;
   font-family: "DM Sans", system-ui, sans-serif;
-  font-size: 0.875rem;
-  font-weight: 700;
+  font-size: clamp(0.95rem, 1.15vw, 1.1rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: none;
   white-space: nowrap;
   transition: background 0.25s, transform 0.25s;
 }
@@ -221,7 +225,20 @@ p, a, li, span, button, input, textarea, label { font-family: var(--font-body); 
   #menuOverlay .menu-media { flex: 1 1 32%; width: 32%; }
   #menuPanel { flex: 0 0 68%; width: 68% !important; min-width: 0; }
 }
-#menuPanel .menu-nav-link { display: block; width: 100%; background: transparent; color: #242d63 !important; padding: 0.65rem 0; border-bottom: 1px solid #e5e7eb; font-weight: 700; font-size: 1rem; letter-spacing: 0.12em; text-transform: uppercase; transition: 0.25s ease; }
+#menuPanel .menu-nav-link {
+  display: block;
+  width: 100%;
+  background: transparent;
+  color: #242d63 !important;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid #e5e7eb;
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: clamp(0.95rem, 1.15vw, 1.1rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  transition: background 0.25s ease, color 0.25s ease;
+}
 #menuPanel .menu-nav-link:hover { background: transparent; color: #cd7f2f !important; }
 .menu-cta-btn { display: flex; width: 100%; justify-content: center; margin-top: 1.5rem; border-radius: 999px; }
 .menu-social { margin-top: 2rem; padding-top: 1.25rem; border-top: 1px solid #e5e7eb; }
@@ -230,7 +247,7 @@ p, a, li, span, button, input, textarea, label { font-family: var(--font-body); 
 .menu-social-links a { width: 2.5rem; height: 2.5rem; display: flex; align-items: center; justify-content: center; background: #242d63; color: #fff; transition: 0.25s; }
 .menu-social-links a:hover { background: #cd7f2f; }
 .site-footer {
-  background: #242d63;
+  background-color: #242d63 !important;
   color: #ffffff;
   border-top: none;
 }
@@ -268,7 +285,19 @@ p, a, li, span, button, input, textarea, label { font-family: var(--font-body); 
 .contact-form { background: #fff; padding: 2rem; border-radius: 14px; box-shadow: 0 12px 40px rgba(36, 45, 99, 0.1); }
 .contact-form input, .contact-form textarea, .contact-form select { width: 100%; border: 1px solid #e5e8f2; padding: 0.85rem 1rem; border-radius: 8px; margin-bottom: 1rem; }
 .contact-form label { display: block; font-size: 0.8rem; font-weight: 600; color: #3d4660; margin-bottom: 0.35rem; }
-.map-placeholder { background: #eef1fa; border-radius: 14px; min-height: 280px; display: flex; align-items: center; justify-content: center; color: #5b6478; margin-top: 2rem; }
+.map-embed {
+  margin-top: 2rem;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(36, 45, 99, 0.1);
+  line-height: 0;
+}
+.map-embed iframe {
+  width: 100%;
+  height: clamp(280px, 50vw, 450px);
+  display: block;
+  border: 0;
+}
   </style>
 </head>
 <body class="inner-page bg-white font-sansBrand">
@@ -278,11 +307,11 @@ p, a, li, span, button, input, textarea, label { font-family: var(--font-body); 
       <nav class="site-nav-pill hidden lg:flex items-center gap-1 flex-1" aria-label="Main navigation">
         <a href="index.html" class="nav-link">Home</a>
         <a href="about.html" class="nav-link">About</a>
-        <a href="#" class="nav-link">Blog</a>
         <a href="properties.html" class="nav-link">Properties</a>
+        <a href="#" class="nav-link">Blog</a>
       </nav>
       <a href="index.html" class="navbar-logo absolute left-1/2 -translate-x-1/2">
-        <img src="./logo/grasp-logo.png" alt="GRASP Logo" class="h-24 md:h-28 w-auto object-contain" />
+        <img src="./logo/grasp-logo.png" alt="GRASP Logo" class="h-[4.75rem] md:h-28 w-auto object-contain" />
       </a>
       <div class="navbar-actions flex items-center justify-end gap-4 flex-1">
         <a href="contact.html" class="nav-cta-btn hidden md:inline-flex">Get A Quote</a>
@@ -359,7 +388,11 @@ p, a, li, span, button, input, textarea, label { font-family: var(--font-body); 
               <label for="name">Full Name</label>
               <input type="text" id="name" name="name" placeholder="Your name" required />
             </div>
+            <div>
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" autocomplete="tel" required />
             </div>
+          </div>
           <label for="email">Email</label>
           <input type="email" id="email" name="email" placeholder="you@email.com" required />
           <label for="interest">I am interested in</label>
@@ -381,14 +414,23 @@ p, a, li, span, button, input, textarea, label { font-family: var(--font-body); 
       </div>
 
       <div class="site-shell">
-        <div class="map-placeholder">
-          <p><i class="fa-solid fa-map-location-dot text-brandGold mr-2"></i> #15, 4th B Main Road, Nagarbhavi Main Road, Kalyan Nagar, Bangalore 560040 — Map integration can be added here</p>
+        <div class="map-embed">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.941015493023!2d77.53174143919502!3d12.975624482274497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3ddd2c902815%3A0x827aea324d5b628b!2sNagarabhavi%20Main%20Rd%20%26%204th%20Main%20Rd%2C%20Govindaraja%20Nagar%20Ward%2C%20Govindaraja%20Nagar%2C%20Vijayanagar%2C%20Bengaluru%2C%20Karnataka%20560040!5e0!3m2!1sen!2sin!4v1780303971582!5m2!1sen!2sin"
+            width="600"
+            height="450"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="GRASP Realtors — Nagarbhavi Main Road, Bangalore"
+          ></iframe>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer font-sans">
+  <footer class="site-footer bg-[#242d63] font-sans">
     <div class="site-shell py-16">
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
@@ -471,8 +513,8 @@ p, a, li, span, button, input, textarea, label { font-family: var(--font-body); 
         <ul class="space-y-1">
           <li><a href="index.html" class="menu-nav-link">Home</a></li>
           <li><a href="about.html" class="menu-nav-link">About</a></li>
-          <li><a href="#" class="menu-nav-link">Blog</a></li>
           <li><a href="properties.html" class="menu-nav-link">Properties</a></li>
+          <li><a href="#" class="menu-nav-link">Blog</a></li>
           <li><a href="contact.html" class="menu-nav-link">Contact</a></li>
         </ul>
         <a href="contact.html" class="nav-cta-btn menu-cta-btn">Get A Quote</a>

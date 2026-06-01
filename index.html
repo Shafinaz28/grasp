@@ -272,11 +272,11 @@
       }
 
       #navbar {
-        height: 88px !important;
+        height: 100px !important;
       }
 
       #navbar a img {
-        height: 58px !important;
+        height: 76px !important;
       }
 
       #menuToggle {
@@ -287,6 +287,14 @@
     }
 
     @media (max-width: 1023px) {
+      #navbar {
+        height: 100px !important;
+      }
+
+      #navbar a img {
+        height: 76px !important;
+      }
+
       #navbar .site-shell {
         position: relative;
       }
@@ -449,9 +457,9 @@
       background: #cd7f2f;
       color: #ffffff !important;
       font-family: var(--font-body);
-      font-size: clamp(0.8rem, 1vw, 0.9rem);
-      font-weight: 700;
-      letter-spacing: 0.04em;
+      font-size: clamp(0.95rem, 1.15vw, 1.1rem);
+      font-weight: 600;
+      letter-spacing: 0.02em;
       text-transform: none;
       white-space: nowrap;
       transition: background 0.25s, color 0.25s, transform 0.25s;
@@ -547,17 +555,16 @@
       border-bottom: 1px solid #e5e7eb;
       text-align: left;
       font-family: var(--font-body);
-      font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+      font-size: clamp(0.95rem, 1.15vw, 1.1rem);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-transform: none;
       transition: background 0.25s ease, color 0.25s ease;
     }
 
     @media (min-width: 768px) {
       #menuPanel .menu-nav-link,
       #menuPanel .menu-nav-btn {
-        font-size: 1.1rem;
         padding: 0.75rem 0;
       }
     }
@@ -1092,7 +1099,7 @@
     .fusion-footer-main a:hover { color: #cd7f2f; }
 
     .site-footer {
-      background: #242d63;
+      background-color: #242d63 !important;
       color: #ffffff;
       border-top: none;
     }
@@ -1186,15 +1193,15 @@
       <nav class="site-nav-pill hidden lg:flex items-center gap-1 flex-1" aria-label="Main navigation">
         <a href="index.html" class="nav-link">Home</a>
         <a href="about.html" class="nav-link">About</a>
-        <a href="#" class="nav-link">Blog</a>
         <a href="properties.html" class="nav-link">Properties</a>
+        <a href="#" class="nav-link">Blog</a>
       </nav>
 
       <a href="index.html" class="navbar-logo absolute left-1/2 -translate-x-1/2 flex items-center justify-center">
         <img
           src="./logo/grasp-logo.png"
           alt="GRASP Logo"
-          class="h-24 md:h-28 lg:h-32 w-auto object-contain"
+          class="h-[4.75rem] md:h-28 lg:h-32 w-auto object-contain"
         />
       </a>
 
@@ -1312,8 +1319,8 @@
         <ul class="space-y-1">
           <li><a href="index.html" class="menu-nav-link">Home</a></li>
           <li><a href="about.html" class="menu-nav-link">About</a></li>
-          <li><a href="#" class="menu-nav-link">Blog</a></li>
           <li><a href="properties.html" class="menu-nav-link">Properties</a></li>
+          <li><a href="#" class="menu-nav-link">Blog</a></li>
           <li><a href="contact.html" class="menu-nav-link">Contact</a></li>
         </ul>
 
@@ -2696,7 +2703,7 @@
 
 
 <!-- FOOTER -->
-<footer class="site-footer font-sans">
+<footer class="site-footer bg-[#242d63] font-sans">
   <div class="site-shell py-16">
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
