@@ -176,8 +176,9 @@
     .hero-light .hero-video-overlay {
       background: linear-gradient(
         180deg,
-        rgba(36, 45, 99, 0.55) 0%,
-        rgba(0, 0, 0, 0.44) 100%
+        rgba(0, 0, 0, 0.2) 0%,
+        rgba(0, 0, 0, 0.35) 50%,
+        rgba(0, 0, 0, 0.5) 100%
       );
     }
 
@@ -1159,13 +1160,12 @@
     <section class="hero-light relative w-full max-w-full overflow-hidden">
       <video
         id="heroVideo"
-        class="hero-video absolute inset-0 w-full h-full object-cover z-0 scale-105"
+        class="hero-video absolute inset-0 w-full h-full object-cover z-0"
         autoplay
         muted
         loop
         playsinline
-        preload="metadata"
-        poster="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80"
+        preload="auto"
         aria-hidden="true"
       >
         <source src="./video/13240171_1920_1080_60fps.mp4" type="video/mp4" />
