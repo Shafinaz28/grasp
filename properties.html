@@ -65,7 +65,7 @@ p, a, li, span, button, label { font-family: var(--font-body); }
   #navbar { height: 100px !important; }
   #navbar a img { height: 76px !important; }
   #menuToggle { width: 30px !important; height: 22px !important; }
-  .page-main { padding-top: 100px !important; }
+  .page-banner { padding-top: calc(100px + 2rem); }
 }
 @media (max-width: 1023px) {
   #navbar { height: 100px !important; }
@@ -109,13 +109,40 @@ p, a, li, span, button, label { font-family: var(--font-body); }
 }
 .header-at-top { background: transparent !important; box-shadow: none !important; }
 .header-scrolled { background: #ffffff !important; box-shadow: 0 4px 24px rgba(36, 45, 99, 0.1); }
+/* Inner pages with banner — white nav bar (matches About) */
+.inner-page--banner .header-at-top,
+.inner-page--banner .header-scrolled {
+  background: #ffffff !important;
+  box-shadow: 0 4px 20px rgba(36, 45, 99, 0.08);
+}
+.inner-page--banner .header-at-top .site-nav-pill .nav-link,
+.inner-page--banner .header-scrolled .site-nav-pill .nav-link {
+  color: #242d63 !important;
+}
+.inner-page--banner .header-at-top .site-nav-pill .nav-link.text-brandGold,
+.inner-page--banner .header-scrolled .site-nav-pill .nav-link.text-brandGold {
+  background: #eceef3;
+  color: #cd7f2f !important;
+}
+.inner-page--banner .header-at-top .site-nav-pill .nav-link:hover,
+.inner-page--banner .header-scrolled .site-nav-pill .nav-link:hover {
+  background: #eceef3;
+  color: #cd7f2f !important;
+}
+.inner-page--banner .header-at-top .menu-line,
+.inner-page--banner .header-scrolled .menu-line {
+  background: #242d63 !important;
+}
+.inner-page--banner .navbar-logo img {
+  filter: none;
+}
 .nav-cta-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0.7rem 1.5rem;
   border-radius: 999px;
-  background: #cd7f2f;
+  background: #242d63;
   color: #ffffff !important;
   font-family: "DM Sans", system-ui, sans-serif;
   font-size: clamp(0.95rem, 1.15vw, 1.1rem);
@@ -125,7 +152,7 @@ p, a, li, span, button, label { font-family: var(--font-body); }
   white-space: nowrap;
   transition: background 0.25s, transform 0.25s;
 }
-.nav-cta-btn:hover { background: #242d63; color: #ffffff !important; transform: translateY(-1px); }
+.nav-cta-btn:hover { background: #1a2340; color: #ffffff !important; transform: translateY(-1px); }
 .menu-line { transition: all 0.3s ease; background: #242d63; }
 .header-at-top .menu-line { background: #242d63 !important; }
 .menu-open .line-1 { transform: rotate(45deg) translate(7px, 7px); }
@@ -225,23 +252,27 @@ p, a, li, span, button, label { font-family: var(--font-body); }
 .menu-panel-logo { display: inline-flex; align-items: center; flex-shrink: 0; }
 .menu-panel-logo img { height: clamp(3rem, 8vw, 4.5rem); width: auto; object-fit: contain; }
 
-.page-main { padding-top: 125px; }
+.page-main { padding-top: 0; }
 .page-banner {
   background: linear-gradient(135deg, #242d63 0%, #1a2340 100%);
-  padding: 3.5rem 0 4rem;
+  padding: calc(125px + 3.5rem) 0 4rem;
   text-align: center;
   color: #fff;
 }
 .page-banner h1 {
+  font-family: "Playfair Display", Georgia, serif;
   font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
   margin-bottom: 0.75rem;
   color: #fff;
+  line-height: 1.12;
 }
 .page-banner p {
   color: rgba(255, 255, 255, 0.85);
   max-width: 36rem;
   margin: 0 auto;
   line-height: 1.7;
+  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
 }
 .page-banner .breadcrumb {
   display: flex;
@@ -250,12 +281,21 @@ p, a, li, span, button, label { font-family: var(--font-body); }
   gap: 0.5rem;
   font-size: 0.8rem;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 0.12em;
   margin-bottom: 1rem;
   color: #cd7f2f;
 }
-.page-banner .breadcrumb a { color: rgba(255, 255, 255, 0.7); }
+.page-banner .breadcrumb a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: color 0.2s;
+}
 .page-banner .breadcrumb a:hover { color: #cd7f2f; }
+.page-banner .breadcrumb span { color: rgba(255, 255, 255, 0.55); }
+@media (max-width: 767px) {
+  .page-main { padding-top: 0 !important; }
+  .page-banner { padding-top: calc(100px + 2.5rem); }
+}
 
 .page-section { padding: clamp(3rem, 6vw, 5rem) 0; }
 .page-section.soft { background: #f8f9fc; }
@@ -304,6 +344,11 @@ p, a, li, span, button, label { font-family: var(--font-body); }
   overflow: hidden;
   box-shadow: 0 8px 32px rgba(36, 45, 99, 0.08);
   transition: transform 0.35s ease, box-shadow 0.35s ease, opacity 0.35s;
+}
+a.prop-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
 }
 .prop-card:hover {
   transform: translateY(-6px);
@@ -400,7 +445,7 @@ p, a, li, span, button, label { font-family: var(--font-body); }
   text-align: center;
   margin: 0;
   padding: clamp(2.5rem, 5vw, 3.5rem) clamp(1rem, 4vw, 2.5rem);
-  background: #242d63;
+  background: #CD7F2F;
   border-radius: 0;
 }
 .properties-cta .site-shell {
@@ -415,17 +460,18 @@ p, a, li, span, button, label { font-family: var(--font-body); }
   line-height: 1.7;
 }
 .properties-cta .fusion-btn-primary {
-  background: #cd7f2f;
+  background: #242d63;
   color: #ffffff;
 }
 .properties-cta .fusion-btn-primary:hover {
-  background: #ffffff;
-  color: #242d63;
+  background: #242d63;
+  color: #ffffff;
 }
 .fusion-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  font-family: "DM Sans", system-ui, sans-serif;
   padding: 0.95rem 1.75rem;
   border-radius: 999px;
   font-weight: 700;
@@ -435,10 +481,10 @@ p, a, li, span, button, label { font-family: var(--font-body); }
   transition: 0.25s ease;
 }
 .fusion-btn-primary { background: #242d63; color: #fff; }
-.fusion-btn-primary:hover { background: #cd7f2f; color: #fff; }
+.fusion-btn-primary:hover { background: #242d63; color: #fff; }
   </style>
 </head>
-<body class="inner-page bg-white font-sansBrand">
+<body class="inner-page inner-page--banner bg-white font-sansBrand">
 
   <header id="navbar" class="w-full h-[125px] header-at-top transition-all duration-300">
     <div class="relative h-full flex items-center justify-between site-shell">
@@ -462,19 +508,20 @@ p, a, li, span, button, label { font-family: var(--font-body); }
     </div>
   </header>
 
-  <main class="page-main">
-    <div class="page-banner">
-      <div class="site-shell">
-        <nav class="breadcrumb" aria-label="Breadcrumb">
-          <a href="index.html">Home</a>
-          <span>/</span>
-          <span>Properties</span>
-        </nav>
-        <h1>Our Projects</h1>
-        <p>NVG Seattle, NVG Nippon, and Sambhav Buloke — curated by GRASP Realtors.</p>
-      </div>
+  <!-- HERO SECTION -->
+  <section class="page-banner" aria-label="Properties">
+    <div class="site-shell">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span>Properties</span>
+      </nav>
+      <h1>Our Projects</h1>
+      <p class="page-banner-lead">NVG Seattle, NVG Nippon, and Sambhav Buloke — curated by GRASP Realtors.</p>
     </div>
+  </section>
 
+  <main class="page-main w-full max-w-full overflow-x-hidden">
     <section class="page-section soft">
       <div class="site-shell">
         <div class="text-center max-w-2xl mx-auto mb-8">
@@ -482,22 +529,22 @@ p, a, li, span, button, label { font-family: var(--font-body); }
           <h2 class="section-title">Featured <em>Projects</em></h2>
         </div>
         <div class="prop-cards-grid" id="propertiesGrid">
-          <article class="prop-card" data-category="residential">
+          <a href="nvg-seattle.html" class="prop-card" data-category="residential">
             <div class="prop-card-media">
               <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80" alt="NVG Seattle" />
               <span class="prop-badge prop-badge-offer">Pre-Launch</span>
             </div>
             <div class="prop-card-body">
               <p class="prop-location"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> North Bangalore Growth Corridor</p>
-              <h3 class="prop-card-title">NVG Seattle · NVG Lifestyle</h3>
+              <h3 class="prop-card-title">NVG Seattle</h3>
               <ul class="prop-amenities">
                 <li><i class="fa-solid fa-building" aria-hidden="true"></i> High-Rise</li>
                 <li><i class="fa-solid fa-chart-line" aria-hidden="true"></i> Pre-Launch EOI</li>
                 <li><i class="fa-solid fa-indian-rupee-sign" aria-hidden="true"></i> ₹1L Refundable</li>
               </ul>
             </div>
-          </article>
-          <article class="prop-card" data-category="residential">
+          </a>
+          <a href="nvg-nippon.html" class="prop-card" data-category="residential">
             <div class="prop-card-media">
               <img src="./image/nvgnippon.png" alt="NVG Nippon — KIADB, Bangalore" />
               <span class="prop-badge prop-badge-offer">Pre-Launch</span>
@@ -511,22 +558,22 @@ p, a, li, span, button, label { font-family: var(--font-body); }
                 <li><i class="fa-solid fa-building" aria-hidden="true"></i> 360+ Units</li>
               </ul>
             </div>
-          </article>
-          <article class="prop-card" data-category="residential">
+          </a>
+          <a href="buloke-sambhav.html" class="prop-card" data-category="residential">
             <div class="prop-card-media">
-              <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80" alt="Sambhav × Buloke — North Bengaluru" />
-              <span class="prop-badge prop-badge-offer">Upcoming</span>
+              <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80" alt="Sambhav Buloke — North Bengaluru" />
+              <span class="prop-badge prop-badge-offer">Rising Soon</span>
             </div>
             <div class="prop-card-body">
-              <p class="prop-location"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> North Bengaluru · Bettahalasoor &amp; Devanahalli</p>
-              <h3 class="prop-card-title">Buloke Sambhav</h3>
+              <p class="prop-location"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> North Bengaluru</p>
+              <h3 class="prop-card-title">Sambhav Buloke</h3>
               <ul class="prop-amenities">
-                <li><i class="fa-solid fa-building" aria-hidden="true"></i> ~115 Premium Units</li>
-                <li><i class="fa-solid fa-city" aria-hidden="true"></i> Apartments &amp; Plots</li>
-                <li><i class="fa-solid fa-leaf" aria-hidden="true"></i> Green &amp; Sustainable</li>
+                <li><i class="fa-solid fa-building" aria-hidden="true"></i> 115 Apartments</li>
+                <li><i class="fa-solid fa-leaf" aria-hidden="true"></i> Extensive Greenery</li>
+                <li><i class="fa-solid fa-handshake" aria-hidden="true"></i> Pre-Launch</li>
               </ul>
             </div>
-          </article>
+          </a>
         </div>
       </div>
     </section>
@@ -539,6 +586,7 @@ p, a, li, span, button, label { font-family: var(--font-body); }
     </div>
   </main>
 
+  <!-- FOOTER -->
   <footer class="site-footer bg-[#242d63] font-sans">
     <div class="site-shell py-16">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
@@ -561,11 +609,11 @@ p, a, li, span, button, label { font-family: var(--font-body); }
         <div>
           <h3 class="text-xl font-serifBrand mb-6 font-semibold">Our Services</h3>
           <ul class="space-y-4">
-            <li><a href="properties.html" class="hover:text-brandGold transition">Property Buying</a></li>
-            <li><a href="properties.html" class="hover:text-brandGold transition">Property Selling</a></li>
-            <li><a href="properties.html" class="hover:text-brandGold transition">Investment Guidance</a></li>
-            <li><a href="properties.html" class="hover:text-brandGold transition">Commercial Properties</a></li>
-            <li><a href="contact.html" class="hover:text-brandGold transition">Document Support</a></li>
+            <li><a href="#" class="hover:text-brandGold transition">Property Buying</a></li>
+            <li><a href="#" class="hover:text-brandGold transition">Property Selling</a></li>
+            <li><a href="#" class="hover:text-brandGold transition">Investment Guidance</a></li>
+            <li><a href="#" class="hover:text-brandGold transition">Commercial Properties</a></li>
+            <li><a href="#" class="hover:text-brandGold transition">Document Support</a></li>
           </ul>
         </div>
         <div>
@@ -590,6 +638,7 @@ p, a, li, span, button, label { font-family: var(--font-body); }
     </div>
   </footer>
 
+  <!-- FULL SCREEN MENU -->
   <section id="menuOverlay" class="fixed inset-0 z-[10000] invisible opacity-0 transition-opacity duration-500" aria-hidden="true">
     <div class="menu-overlay-inner">
       <div class="menu-media menu-media--peek" aria-hidden="true">

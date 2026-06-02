@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sambhav Buloke — GRASP Realtors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { brandBlue: "#242d63", brandGold: "#cd7f2f" }, fontFamily: { sans: ["DM Sans", "system-ui", "sans-serif"], sansBrand: ["DM Sans", "system-ui", "sans-serif"], serif: ["Playfair Display", "Georgia", "serif"], serifBrand: ["Playfair Display", "Georgia", "serif"] } } } };
+  </script>
+  <style>
+html, body { background: #fff; color: #1f2937; line-height: 1.5; font-family: "DM Sans", system-ui, sans-serif; width: 100%; max-width: 100%; overflow-x: hidden; }
+main, header, footer, section { max-width: 100%; }
+img { max-width: 100%; }
+:root { --font-display: "Playfair Display", Georgia, serif; --font-body: "DM Sans", system-ui, sans-serif; --brand-navy: #242d63; --brand-gold: #cd7f2f; }
+h1, h2, h3 { font-family: var(--font-display) !important; font-weight: 600; color: var(--brand-navy); }
+p, a, li, span, button, label { font-family: var(--font-body); }
+.section-kicker { color: var(--brand-gold); letter-spacing: 0.35em; text-transform: uppercase; font-size: 0.72rem; font-weight: 700; }
+.section-title { font-family: var(--font-display); color: var(--brand-navy); font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 600; line-height: 1.12; }
+.section-title em { font-style: italic; color: var(--brand-gold); }
+.site-shell { width: 100%; max-width: 1240px; margin-inline: auto; padding-inline: clamp(1rem, 4vw, 2.5rem); }
+@media (max-width: 767px) { .site-shell { padding-inline: 1rem; } #navbar { height: 100px !important; } #navbar a img { height: 76px !important; } .page-main { padding-top: 100px !important; } }
+@media (max-width: 1023px) { #navbar { height: 100px !important; } #navbar a img { height: 76px !important; } #navbar .navbar-logo { position: static !important; transform: none !important; display: flex; margin-right: auto; } #navbar .navbar-actions { margin-left: auto; } #menuToggle { display: flex; flex-direction: column; gap: 6px; } }
+#navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 9999; transition: transform 0.4s, background 0.3s, box-shadow 0.3s; }
+#navbar.navbar-hidden { transform: translateY(-100%); }
+.site-nav-pill { background: transparent; padding: 0; gap: 0.25rem; }
+.site-nav-pill .nav-link { display: inline-block; padding: 0.6rem 1.2rem; border-radius: 999px; font-weight: 600; color: #242d63 !important; text-decoration: none; transition: background 0.25s, color 0.25s; }
+.site-nav-pill .nav-link:hover, .site-nav-pill .nav-link.text-brandGold { background: #eceef3; color: #cd7f2f !important; }
+.header-at-top { background: #ffffff !important; box-shadow: 0 4px 20px rgba(36, 45, 99, 0.08) !important; }
+.header-scrolled { background: #fff !important; box-shadow: 0 4px 24px rgba(36, 45, 99, 0.1); }
+.nav-cta-btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.7rem 1.5rem; border-radius: 999px; background: #242d63; color: #fff !important; font-weight: 600; font-family: "DM Sans", system-ui, sans-serif; }
+.nav-cta-btn:hover { background: #1a2340; }
+.menu-line { background: #242d63; transition: all 0.3s; }
+.menu-open .line-1 { transform: rotate(45deg) translate(7px, 7px); }
+.menu-open .line-2 { opacity: 0; }
+.menu-open .line-3 { transform: rotate(-45deg) translate(8px, -8px); }
+#menuOverlay { width: 100vw; height: 100dvh; }
+#menuOverlay .menu-overlay-inner { display: flex; min-height: 100dvh; }
+#menuOverlay .menu-media { flex: 1 1 65%; min-height: 100dvh; cursor: pointer; }
+#menuOverlay .menu-media--peek .menu-media-overlay { background: rgba(36, 45, 99, 0.5); backdrop-filter: blur(4px); }
+#menuOverlay .menu-media-overlay { position: absolute; inset: 0; }
+#menuPanel { flex: 0 0 35%; width: 35% !important; max-width: 420px; min-height: 100dvh; background: #fff !important; }
+#menuPanel .menu-nav-link { display: block; padding: 0.65rem 0; border-bottom: 1px solid #e5e7eb; font-weight: 600; color: #242d63 !important; }
+.site-footer { background-color: #242d63 !important; color: #fff; }
+.site-footer .footer-logo { filter: brightness(0) invert(1); }
+.site-footer h3 { color: #fff; }
+.site-footer p, .site-footer li, .site-footer span { color: rgba(255, 255, 255, 0.85); }
+.site-footer a { color: rgba(255, 255, 255, 0.85); text-decoration: none; transition: color 0.25s ease; }
+.site-footer ul a:hover { color: #cd7f2f; text-decoration: underline; }
+.site-footer .footer-divider { border-color: rgba(255, 255, 255, 0.15); }
+.site-footer .footer-copy { color: rgba(255, 255, 255, 0.55); }
+.site-footer .footer-social a { display: inline-flex; align-items: center; justify-content: center; width: 2.5rem; height: 2.5rem; border-radius: 999px; background: rgba(255, 255, 255, 0.12); color: #fff; }
+.site-footer .footer-social a:hover { background: #cd7f2f; color: #fff; text-decoration: none; }
+.page-main { padding-top: 125px; }
+/* Hero — matches About layout */
+.page-banner {
+  background: linear-gradient(135deg, #242d63 0%, #1a2340 100%);
+  padding: calc(125px + 3.5rem) 0 4rem;
+  text-align: center;
+  color: #fff;
+}
+.page-banner h1 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #fff;
+  line-height: 1.12;
+}
+.page-banner p {
+  color: rgba(255, 255, 255, 0.88);
+  max-width: 36rem;
+  margin: 0 auto;
+  line-height: 1.7;
+  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+}
+.page-banner .breadcrumb {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+  color: #cd7f2f;
+}
+.page-banner .breadcrumb a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.page-banner .breadcrumb a:hover { color: #cd7f2f; }
+.page-banner .breadcrumb span { color: rgba(255, 255, 255, 0.55); }
+@media (max-width: 767px) {
+  .page-main { padding-top: 100px !important; }
+  .page-banner { padding-top: calc(100px + 2.5rem); }
+}
+.proj-inline-link { color: #cd7f2f; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.proj-inline-link:hover { color: #242d63; }
+.page-section { padding: clamp(3rem, 6vw, 5rem) 0; }
+.page-section.soft { background: #f8f9fc; }
+.proj-split {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3rem);
+  align-items: center;
+}
+@media (min-width: 992px) {
+  .proj-split { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 3rem; }
+}
+.proj-split-media {
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 20px 56px rgba(36, 45, 99, 0.14);
+  border: 1px solid #e5e8f2;
+}
+.proj-split-media img {
+  width: 100%;
+  display: block;
+  height: 100%;
+  min-height: min(420px, 52vh);
+  max-height: 560px;
+  object-fit: cover;
+  object-position: center;
+}
+.proj-split-body { text-align: left; }
+.proj-lead { font-size: 1.05rem; line-height: 1.75; color: #3d4660; margin: 0 0 1.25rem; }
+.proj-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1.75rem; }
+.proj-stat { background: #fff; border-radius: 12px; padding: 1.25rem 1rem; text-align: center; box-shadow: 0 8px 28px rgba(36, 45, 99, 0.08); }
+.proj-stat strong { display: block; font-size: 1.5rem; color: #cd7f2f; line-height: 1.1; margin-bottom: 0.25rem; }
+.proj-stat span { font-size: 0.78rem; color: #5b6478; font-weight: 600; }
+.proj-features { display: grid; gap: 1.25rem; }
+@media (min-width: 640px) { .proj-features { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 992px) { .proj-features { grid-template-columns: repeat(3, 1fr); } }
+.proj-feature { background: #fff; border-radius: 12px; padding: 1.5rem; border: 1px solid #e5e8f2; box-shadow: 0 6px 24px rgba(36, 45, 99, 0.06); }
+.proj-feature i { display: block; font-size: 1.35rem; color: #cd7f2f; margin-bottom: 0.75rem; }
+.proj-feature h3 { margin: 0 0 0.5rem; font-size: 1rem; }
+.proj-feature p { margin: 0; font-size: 0.88rem; color: #5b6478; line-height: 1.65; }
+.proj-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; margin-top: 1.75rem; }
+.proj-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.85rem 1.5rem; border-radius: 999px; font-weight: 700; font-size: 0.9rem; text-decoration: none; transition: 0.25s; font-family: "DM Sans", system-ui, sans-serif; }
+.proj-btn-primary { background: #242d63; color: #fff; }
+.proj-btn-primary:hover { background: #1a2340; color: #fff; }
+.proj-btn-outline { border: 2px solid #242d63; color: #242d63; }
+.proj-btn-wa { background: #25d366; color: #fff; }
+.proj-cta { text-align: center; background: #CD7F2F; color: #fff; padding: clamp(2.5rem, 5vw, 3.5rem) 0; }
+.proj-cta h2 { color: #fff; margin: 0 0 0.75rem; }
+.proj-cta p { color: rgba(255, 255, 255, 0.88); max-width: 36rem; margin: 0 auto 1.5rem; line-height: 1.7; }
+  </style>
+</head>
+<body class="inner-page bg-white font-sansBrand">
+
+  <header id="navbar" class="w-full h-[125px] header-at-top transition-all duration-300">
+    <div class="relative h-full flex items-center justify-between site-shell">
+      <nav class="site-nav-pill hidden lg:flex items-center gap-1 flex-1" aria-label="Main navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="properties.html" class="nav-link text-brandGold">Properties</a>
+        <a href="#" class="nav-link">Blog</a>
+      </nav>
+      <a href="index.html" class="navbar-logo absolute left-1/2 -translate-x-1/2">
+        <img src="./logo/grasp-logo.png" alt="GRASP Logo" class="h-[4.75rem] md:h-28 w-auto object-contain" />
+      </a>
+      <div class="navbar-actions flex items-center justify-end gap-4 flex-1">
+        <a href="contact.html" class="nav-cta-btn hidden md:inline-flex">Get A Quote</a>
+        <button id="menuToggle" class="relative w-9 h-7 flex flex-col items-center justify-center gap-1.5 z-[10001]" aria-label="Open menu">
+          <span class="menu-line line-1 block w-full h-[2px]"></span>
+          <span class="menu-line line-2 block w-full h-[2px]"></span>
+          <span class="menu-line line-3 block w-full h-[2px]"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="page-banner" aria-label="Sambhav  Buloke">
+    <div class="site-shell">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a><span>/</span>
+        <a href="properties.html">Properties</a><span>/</span>
+          <span>Sambhav Buloke</span>
+      </nav>
+      <p class="section-kicker" style="color:#cd7f2f;margin-bottom:0.75rem;">Pre-Launch · Rising Soon · North Bengaluru</p>
+      <h1>Sambhav Buloke</h1>
+      <p>An upcoming premium residential apartment development — a strategic collaboration between Sambhav Ventures and Buloke Realty offering spacious, elevated luxury living with extensive greenery.</p>
+    </div>
+  </section>
+
+  <main class="page-main w-full max-w-full overflow-x-hidden">
+    <section class="page-section">
+      <div class="site-shell">
+        <div class="proj-split">
+          <div class="proj-split-media">
+            <img src="./image/sambhav.jpg" alt="Sambhav Buloke — premium residences, North Bengaluru" width="1400" height="900" loading="lazy" />
+          </div>
+          <div class="proj-split-body">
+            <p class="section-kicker mb-3">Collaboration</p>
+            <h2 class="section-title">Elevated Luxury <em>Living</em></h2>
+            <p class="proj-lead">Sambhav Buloke is a strategic real estate collaboration between <strong>Sambhav Ventures</strong> and <strong>Buloke Realty</strong>, designed to deliver spacious, elevated luxury living surrounded by extensive greenery in North Bengaluru.</p>
+            <p class="proj-lead" style="margin-bottom:0;">The development features a <strong>115-unit apartment layout</strong> focused on community, modern aesthetics, and human-centric design — currently in its pre-launch / rising-soon phase.</p>
+            <div class="proj-stats">
+              <div class="proj-stat"><strong>115</strong><span>Apartment Units</span></div>
+              <div class="proj-stat"><strong>Premium</strong><span>Residences</span></div>
+              <div class="proj-stat"><strong>North</strong><span>Bengaluru</span></div>
+              <div class="proj-stat"><strong>Rising</strong><span>Soon</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section soft">
+      <div class="site-shell">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <p class="section-kicker mb-3">Development Focus</p>
+          <h2 class="section-title">Human-Centric <em>Design</em></h2>
+        </div>
+        <div class="proj-features">
+          <article class="proj-feature"><i class="fa-solid fa-leaf"></i><h3>Extensive Greenery</h3><p>Elevated luxury living integrated with lush open spaces and a calm residential environment.</p></article>
+          <article class="proj-feature"><i class="fa-solid fa-people-group"></i><h3>Community Focus</h3><p>A 115-unit layout designed to foster connection, comfort, and a sense of belonging.</p></article>
+          <article class="proj-feature"><i class="fa-solid fa-wand-magic-sparkles"></i><h3>Modern Aesthetics</h3><p>Contemporary architecture with spacious layouts and refined, aspirational finishes.</p></article>
+          <article class="proj-feature"><i class="fa-solid fa-heart"></i><h3>Human-Centric Planning</h3><p>Strategic design that prioritises everyday experience, light, and livability.</p></article>
+          <article class="proj-feature"><i class="fa-solid fa-handshake"></i><h3>Sambhav  Buloke</h3><p>A collaboration between Sambhav Ventures and Buloke Realty bringing combined development expertise.</p></article>
+          <article class="proj-feature"><i class="fa-solid fa-building"></i><h3>Premium Apartments</h3><p>Exclusive apartment residences — pre-launch details including pricing and configurations on request.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="site-shell">
+        <div class="text-center max-w-2xl mx-auto mb-8">
+          <p class="section-kicker mb-3">Pre-Launch Updates</p>
+          <h2 class="section-title">Pricing &amp; <em>EOI</em></h2>
+          <p class="proj-lead" style="text-align:center;margin-top:1rem;">For the latest pre-launch pricing, exact location details, or Expression of Interest (EOI) windows, reach out to <a href="contact.html" class="proj-inline-link">GRASP Realtors</a> — we’ll also guide you to official updates from Buloke Realty and Sambhav Ventures channels.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="proj-cta">
+      <div class="site-shell">
+        <h2>Register Your Interest</h2>
+        <p>Get early updates on Sambhav  Buloke — pricing, location coordinates, EOI windows, and launch timeline through GRASP Realtors.</p>
+        <div class="proj-actions">
+          <a href="contact.html" class="proj-btn proj-btn-primary">Contact Us</a>
+          <a href="properties.html" class="proj-btn proj-btn-outline" style="border-color:rgba(255,255,255,0.5);color:#fff;">All Projects</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer bg-[#242d63] font-sans">
+    <div class="site-shell py-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div>
+          <img src="./logo/grasp-logo.png" alt="GRASP Realtors Logo" class="footer-logo h-20 w-auto mb-5 object-contain" />
+          <p class="leading-7 mb-6">GRASP Realtors helps you find verified properties with transparent guidance, smart location insights, and professional real estate support.</p>
+        </div>
+        <div>
+          <h3 class="text-xl font-serifBrand mb-6 font-semibold">Quick Links</h3>
+          <ul class="space-y-4">
+            <li><a href="index.html" class="hover:text-brandGold transition">Home</a></li>
+            <li><a href="about.html" class="hover:text-brandGold transition">About</a></li>
+            <li><a href="properties.html" class="hover:text-brandGold transition">Properties</a></li>
+            <li><a href="#" class="hover:text-brandGold transition">Blog</a></li>
+            <li><a href="contact.html" class="hover:text-brandGold transition">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xl font-serifBrand mb-6 font-semibold">Our Services</h3>
+          <ul class="space-y-4">
+            <li><a href="#" class="hover:text-brandGold transition">Property Buying</a></li>
+            <li><a href="#" class="hover:text-brandGold transition">Property Selling</a></li>
+            <li><a href="#" class="hover:text-brandGold transition">Investment Guidance</a></li>
+            <li><a href="#" class="hover:text-brandGold transition">Commercial Properties</a></li>
+            <li><a href="#" class="hover:text-brandGold transition">Document Support</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xl font-serifBrand mb-6 font-semibold">Contact Us</h3>
+          <ul class="space-y-5">
+            <li class="flex gap-3"><i class="fa-solid fa-location-dot text-brandGold mt-1"></i><span>#15, 4th B Main Road, Nagarbhavi Main Road<br />Kalyan Nagar, Bangalore, Karnataka 560040<br />India</span></li>
+            <li class="flex gap-3"><i class="fa-solid fa-phone text-brandGold mt-1"></i><a href="tel:+917996363331" class="hover:text-brandGold transition">+91 79963 63331</a></li>
+            <li class="flex gap-3"><i class="fa-solid fa-envelope text-brandGold mt-1"></i><a href="mailto:info@grasprealtors.com" class="hover:text-brandGold transition">info@grasprealtors.com</a></li>
+          </ul>
+          <div class="footer-social flex gap-4 mt-6">
+            <a href="https://www.instagram.com/grasprealtors/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 flex items-center justify-center transition" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/share/1BEY3osQYy/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 flex items-center justify-center transition" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com/company/grasprealtors" target="_blank" rel="noopener noreferrer" class="w-10 h-10 flex items-center justify-center transition" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://www.youtube.com/@grasprealtors" target="_blank" rel="noopener noreferrer" class="w-10 h-10 flex items-center justify-center transition" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-divider border-t mt-12 pt-6 flex flex-col md:flex-row justify-between gap-4 footer-copy text-sm">
+        <p>© 2026 GRASP Realtors. All Rights Reserved.</p>
+        <p>Designed for premium real estate experiences.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FULL SCREEN MENU -->
+  <section id="menuOverlay" class="fixed inset-0 z-[10000] invisible opacity-0 transition-opacity duration-500" aria-hidden="true">
+    <div class="menu-overlay-inner">
+      <div class="menu-media menu-media--peek" aria-hidden="true"><div class="menu-media-overlay"></div></div>
+      <div id="menuPanel" class="min-h-full bg-white text-brandBlue px-7 md:px-12 py-10 md:py-14 translate-x-full transition-transform duration-500 ease-in-out overflow-y-auto">
+        <div class="flex items-center justify-between mb-8">
+          <a href="index.html" class="menu-panel-logo" aria-label="GRASP Realtors home"><img src="./logo/grasp-logo.png" alt="GRASP Realtors" /></a>
+          <button id="menuClose" class="text-3xl leading-none text-brandBlue hover:text-brandGold transition" aria-label="Close menu">&times;</button>
+        </div>
+        <ul class="space-y-1">
+          <li><a href="index.html" class="menu-nav-link">Home</a></li>
+          <li><a href="about.html" class="menu-nav-link">About</a></li>
+          <li><a href="properties.html" class="menu-nav-link">Properties</a></li>
+          <li><a href="#" class="menu-nav-link">Blog</a></li>
+          <li><a href="contact.html" class="menu-nav-link">Contact</a></li>
+        </ul>
+        <a href="contact.html" class="nav-cta-btn menu-cta-btn">Get A Quote</a>
+        <div class="menu-social">
+          <p class="menu-social-label">Follow Us</p>
+          <div class="menu-social-links">
+            <a href="https://www.instagram.com/grasprealtors/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/share/1BEY3osQYy/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com/company/grasprealtors" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://www.youtube.com/@grasprealtors" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+(function () {
+  var navbar = document.getElementById("navbar"), menuToggle = document.getElementById("menuToggle"), menuClose = document.getElementById("menuClose"), menuOverlay = document.getElementById("menuOverlay"), menuPanel = document.getElementById("menuPanel");
+  if (!navbar) return;
+  var menuIsOpen = false, lastScrollY = window.scrollY;
+  function updateNavbar() {
+    var y = window.scrollY;
+    if (y > 40) { navbar.classList.add("header-scrolled"); navbar.classList.remove("header-at-top"); }
+    else { navbar.classList.remove("header-scrolled"); navbar.classList.add("header-at-top"); navbar.classList.remove("navbar-hidden"); }
+    if (!menuIsOpen && y > 80) { if (y > lastScrollY + 8) navbar.classList.add("navbar-hidden"); else if (y < lastScrollY - 8) navbar.classList.remove("navbar-hidden"); }
+    lastScrollY = y;
+  }
+  updateNavbar(); window.addEventListener("scroll", updateNavbar, { passive: true });
+  function closeMenu() { menuIsOpen = false; updateNavbar(); if (menuToggle) menuToggle.classList.remove("menu-open"); if (menuOverlay) menuOverlay.classList.add("opacity-0", "invisible"); if (menuPanel) menuPanel.classList.add("translate-x-full"); document.body.style.overflow = "auto"; }
+  if (menuToggle) menuToggle.addEventListener("click", function () { menuIsOpen = !menuIsOpen; menuToggle.classList.toggle("menu-open"); if (menuIsOpen) { navbar.classList.remove("navbar-hidden"); menuOverlay.classList.remove("invisible", "opacity-0"); menuPanel.classList.remove("translate-x-full"); document.body.style.overflow = "hidden"; } else closeMenu(); });
+  if (menuClose) menuClose.addEventListener("click", closeMenu);
+  var menuMedia = menuOverlay && menuOverlay.querySelector(".menu-media"); if (menuMedia) menuMedia.addEventListener("click", closeMenu);
+})();
+  </script>
+</body>
+</html>

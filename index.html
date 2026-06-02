@@ -304,8 +304,8 @@
     }
 
     .hero-light .hero-cta-primary {
-      background: var(--brand-gold);
-      color: var(--brand-navy);
+      background: #242d63;
+      color: #ffffff;
       padding: 1rem 2.5rem;
       font-size: 0.75rem;
       font-weight: 700;
@@ -316,14 +316,14 @@
     }
 
     .hero-light .hero-cta-primary:hover {
-      background: #ffffff;
-      color: var(--brand-navy);
+      background: #1a2340;
+      color: #ffffff;
     }
 
     .hero-light .hero-cta-secondary {
-      border: 2px solid var(--brand-gold);
+      border: 2px solid #242d63;
       color: #ffffff;
-      background: transparent;
+      background: #242d63;
       padding: 1rem 2.5rem;
       font-size: 0.75rem;
       font-weight: 700;
@@ -334,7 +334,8 @@
     }
 
     .hero-light .hero-cta-secondary:hover {
-      background: var(--brand-gold);
+      background: #1a2340;
+      border-color: #1a2340;
       color: #ffffff;
     }
 
@@ -540,7 +541,7 @@
       justify-content: center;
       padding: 0.7rem 1.5rem;
       border-radius: 999px;
-      background: #cd7f2f;
+      background: #242d63;
       color: #ffffff !important;
       font-family: var(--font-body);
       font-size: clamp(0.95rem, 1.15vw, 1.1rem);
@@ -553,7 +554,7 @@
     }
 
     .nav-cta-btn:hover {
-      background: #242d63;
+      background: #1a2340;
       color: #ffffff !important;
       transform: translateY(-1px);
     }
@@ -799,15 +800,17 @@
       border-radius: 8px;
       font-weight: 700;
       font-size: 0.85rem;
+      font-family: "DM Sans", system-ui, sans-serif;
       transition: 0.25s ease;
     }
 
     .fusion-btn-primary {
       background: #242d63;
       color: #fff;
+      font-family: "DM Sans", system-ui, sans-serif;
     }
 
-    .fusion-btn-primary:hover { background: #cd7f2f; color: #000; }
+    .fusion-btn-primary:hover { background: #1a2340; color: #fff; }
 
     .fusion-btn-outline {
       border: 2px solid #242d63;
@@ -2091,7 +2094,7 @@
 
     <div class="prop-cards-grid">
 
-      <article class="prop-card scroll-reveal-item">
+      <a href="nvg-seattle.html" class="prop-card scroll-reveal-item">
         <div class="prop-card-media">
           <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80" alt="NVG Seattle — NVG Lifestyle High Rise" />
           <span class="prop-badge prop-badge-offer">Pre-Launch</span>
@@ -2105,9 +2108,9 @@
             <li><i class="fa-solid fa-chart-line" aria-hidden="true"></i> Priority Access</li>
           </ul>
         </div>
-      </article>
+      </a>
 
-      <article class="prop-card scroll-reveal-item">
+      <a href="nvg-nippon.html" class="prop-card scroll-reveal-item">
         <div class="prop-card-media">
           <img src="./image/nvgnippon.png" alt="NVG Nippon — KIADB, Bangalore" />
           <span class="prop-badge prop-badge-offer">Pre-Launch</span>
@@ -2121,23 +2124,23 @@
             <li><i class="fa-solid fa-building" aria-hidden="true"></i> 360+ Units</li>
           </ul>
         </div>
-      </article>
+      </a>
 
-      <article class="prop-card scroll-reveal-item">
+      <a href="buloke-sambhav.html" class="prop-card scroll-reveal-item">
         <div class="prop-card-media">
-          <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80" alt="Buloke Sambhav PLY" />
-          <span class="prop-badge prop-badge-featured">UPCOMING </span>
+          <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80" alt="Sambhav Buloke — North Bengaluru" />
+          <span class="prop-badge prop-badge-offer">Rising Soon</span>
         </div>
         <div class="prop-card-body">
-          <p class="prop-location"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> North Bengaluru · Bettahalasoor &amp; Devanahalli</p>
-          <h3 class="prop-card-title">Buloke Sambhav</h3>
+          <p class="prop-location"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> North Bengaluru</p>
+          <h3 class="prop-card-title">Sambhav Buloke</h3>
           <ul class="prop-amenities" aria-label="Property details">
-            <li><i class="fa-solid fa-building" aria-hidden="true"></i> ~115 Premium Units</li>
-            <li><i class="fa-solid fa-city" aria-hidden="true"></i> Apartments &amp; Plots</li>
-            <li><i class="fa-solid fa-leaf" aria-hidden="true"></i> Green &amp; Sustainable</li>
+            <li><i class="fa-solid fa-building" aria-hidden="true"></i> 115 Apartments</li>
+            <li><i class="fa-solid fa-leaf" aria-hidden="true"></i> Extensive Greenery</li>
+            <li><i class="fa-solid fa-handshake" aria-hidden="true"></i> Pre-Launch</li>
           </ul>
         </div>
-      </article>
+      </a>
 
     </div>
 
@@ -2288,6 +2291,12 @@
     overflow: hidden;
     box-shadow: 0 8px 32px rgba(36, 45, 99, 0.08);
     transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+
+  a.prop-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
   }
 
   .prop-card:hover {

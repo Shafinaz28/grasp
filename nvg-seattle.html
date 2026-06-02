@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NVG Seattle · NVG Lifestyle — GRASP Realtors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { brandBlue: "#242d63", brandGold: "#cd7f2f" },
+          fontFamily: {
+            sans: ["DM Sans", "system-ui", "sans-serif"],
+            sansBrand: ["DM Sans", "system-ui", "sans-serif"],
+            serif: ["Playfair Display", "Georgia", "serif"],
+            serifBrand: ["Playfair Display", "Georgia", "serif"],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+html, body {
+  background: #f4f6fb;
+  color: #1f2937;
+  line-height: 1.5;
+  font-family: "DM Sans", system-ui, sans-serif;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+main, header, footer, section { max-width: 100%; }
+img { max-width: 100%; display: block; }
+:root {
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+  --brand-navy: #242d63;
+  --brand-navy-deep: #1a2340;
+  --brand-gold: #cd7f2f;
+  --brand-cream: #faf6f0;
+  --section-pad: clamp(2.25rem, 4.5vw, 3.5rem);
+}
+h1, h2, h3 { font-family: var(--font-display) !important; font-weight: 600; color: var(--brand-navy); }
+p, a, li, span, button, label { font-family: var(--font-body); }
+.section-kicker {
+  color: var(--brand-gold);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+.section-title {
+  font-family: var(--font-display);
+  color: var(--brand-navy);
+  font-size: clamp(1.85rem, 4vw, 2.85rem);
+  font-weight: 600;
+  line-height: 1.12;
+}
+.section-title em { font-style: italic; color: var(--brand-gold); }
+.section-sub {
+  text-align: center;
+  color: #5b6478;
+  max-width: 40rem;
+  margin: 0.85rem auto 0;
+  line-height: 1.75;
+  font-size: 1.02rem;
+}
+.section-head { text-align: center; max-width: 42rem; margin: 0 auto 1.75rem; }
+.site-shell { width: 100%; max-width: 1240px; margin-inline: auto; padding-inline: clamp(1rem, 4vw, 2.5rem); }
+
+/* —— Navbar —— */
+#navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+  transform: translateY(0);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease, box-shadow 0.3s ease;
+}
+#navbar.navbar-hidden { transform: translateY(-100%); }
+.site-nav-pill { background: transparent; padding: 0; width: fit-content; gap: 0.25rem; }
+.site-nav-pill .nav-link {
+  display: inline-block; padding: 0.6rem 1.2rem; border-radius: 999px;
+  font-size: clamp(0.95rem, 1.15vw, 1.1rem); font-weight: 600; color: #242d63 !important;
+  transition: background 0.25s, color 0.25s;
+}
+.site-nav-pill .nav-link:hover, .site-nav-pill .nav-link.text-brandGold { background: #eceef3; color: #cd7f2f !important; }
+.header-at-top { background: #ffffff !important; box-shadow: 0 4px 20px rgba(36, 45, 99, 0.08) !important; }
+.header-scrolled { background: #ffffff !important; box-shadow: 0 4px 24px rgba(36, 45, 99, 0.12); }
+.nav-cta-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 0.7rem 1.5rem; border-radius: 999px; background: #242d63; color: #fff !important;
+  font-weight: 600; text-decoration: none; transition: background 0.25s, transform 0.25s;
+  font-family: "DM Sans", system-ui, sans-serif;
+}
+.nav-cta-btn:hover { background: #1a2340; color: #fff !important; transform: translateY(-1px); }
+.header-scrolled .nav-cta-btn:hover { background: #1a2340; color: #fff !important; }
+
+.menu-line { transition: all 0.3s ease; background: #242d63; }
+.menu-open .line-1 { transform: rotate(45deg) translate(7px, 7px); }
+.menu-open .line-2 { opacity: 0; }
+.menu-open .line-3 { transform: rotate(-45deg) translate(8px, -8px); }
+#menuOverlay { background: transparent !important; width: 100vw; height: 100dvh; }
+#menuOverlay .menu-overlay-inner { display: flex; min-height: 100dvh; }
+#menuOverlay .menu-media { flex: 1 1 65%; min-height: 100dvh; position: relative; cursor: pointer; }
+#menuOverlay .menu-media--peek .menu-media-overlay { background: rgba(36,45,99,0.5); backdrop-filter: blur(4px); }
+#menuOverlay .menu-media-overlay { position: absolute; inset: 0; }
+#menuPanel { flex: 0 0 35%; width: 35% !important; max-width: 420px; min-height: 100dvh; background: #fff !important; }
+#menuPanel .menu-nav-link { display: block; padding: 0.65rem 0; border-bottom: 1px solid #e5e7eb; font-weight: 600; color: #242d63 !important; text-decoration: none; }
+#menuPanel .menu-nav-link:hover { color: #cd7f2f !important; }
+.menu-cta-btn { display: flex; width: 100%; justify-content: center; margin-top: 1.5rem; border-radius: 999px; }
+.menu-social { margin-top: 2rem; padding-top: 1.25rem; border-top: 1px solid #e5e7eb; }
+.menu-social-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #cd7f2f; margin: 0 0 0.85rem; }
+.menu-social-links { display: flex; gap: 0.65rem; }
+.menu-social-links a { width: 2.5rem; height: 2.5rem; display: flex; align-items: center; justify-content: center; background: #242d63; color: #fff; }
+.menu-panel-logo img { height: clamp(3rem, 8vw, 4.5rem); width: auto; object-fit: contain; }
+
+@media (max-width: 767px) {
+  .site-shell { padding-inline: 1rem; }
+  #navbar { height: 100px !important; }
+  #navbar a img { height: 76px !important; }
+  #menuToggle { width: 30px !important; height: 22px !important; }
+  .page-main { padding-top: 100px !important; }
+}
+@media (max-width: 1023px) {
+  #navbar { height: 100px !important; }
+  #navbar a img { height: 76px !important; }
+  #navbar .navbar-logo { position: static !important; transform: none !important; display: flex; margin-right: auto; }
+  #navbar .navbar-actions { margin-left: auto; }
+  #menuToggle { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; }
+}
+
+/* —— Layout —— */
+.page-main { padding-top: 125px; }
+.page-banner {
+  background: linear-gradient(135deg, #242d63 0%, #1a2340 100%);
+  padding: calc(125px + 3.5rem) 0 4rem;
+  text-align: center;
+  color: #fff;
+}
+.page-banner h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 0.75rem;
+  color: #fff;
+}
+.page-banner p {
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 36rem;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.page-banner .breadcrumb {
+  display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5rem;
+  font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px;
+  margin-bottom: 1rem; color: #cd7f2f;
+}
+.page-banner .breadcrumb a { color: rgba(255,255,255,0.7); text-decoration: none; }
+.page-banner .breadcrumb a:hover { color: #cd7f2f; }
+.page-banner .breadcrumb span { color: rgba(255,255,255,0.55); }
+@media (max-width: 767px) {
+  .page-main { padding-top: 100px !important; }
+  .page-banner { padding-top: calc(100px + 2.5rem); }
+}
+
+/* —— Sections —— */
+.page-section { padding: var(--section-pad) 0; background: #ffffff; }
+.page-section.soft { background: #f4f6fc; }
+.page-section.cream { background: var(--brand-cream); }
+.page-section.navy-band {
+  background: linear-gradient(135deg, #242d63 0%, #1a2340 100%);
+  color: #fff;
+}
+.page-section.navy-band .section-title { color: #fff; }
+.page-section.navy-band .section-kicker { color: #cd7f2f; }
+
+.proj-overview { display: grid; gap: 2.5rem; align-items: center; }
+@media (min-width: 992px) { .proj-overview { grid-template-columns: 1.15fr 0.85fr; } }
+.proj-lead { font-size: 1.05rem; line-height: 1.8; color: #3d4660; margin: 0 0 1.15rem; }
+
+.proj-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+@media (min-width: 640px) { .proj-stats { grid-template-columns: repeat(2, 1fr); } }
+.proj-stat {
+  background: #fff; border-radius: 14px; padding: 1.35rem 1rem; text-align: center;
+  box-shadow: 0 10px 32px rgba(36, 45, 99, 0.08);
+  border: 1px solid #e8ecf4;
+  border-top: 3px solid #cd7f2f;
+}
+.proj-stat strong { display: block; font-size: 1.6rem; color: #cd7f2f; line-height: 1.1; margin-bottom: 0.3rem; }
+.proj-stat span { font-size: 0.78rem; color: #5b6478; font-weight: 600; line-height: 1.35; }
+
+.proj-features { display: grid; gap: 1.25rem; }
+@media (min-width: 640px) { .proj-features { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 992px) { .proj-features { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 992px) { #design .proj-features { grid-template-columns: repeat(4, 1fr); } }
+.proj-feature {
+  background: #fff; border-radius: 16px; padding: 1.6rem 1.4rem;
+  border: 1px solid #e5e8f2; box-shadow: 0 8px 28px rgba(36, 45, 99, 0.06);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.proj-feature:hover { transform: translateY(-4px); box-shadow: 0 14px 40px rgba(36, 45, 99, 0.1); }
+.proj-feature i {
+  width: 2.75rem; height: 2.75rem; border-radius: 12px;
+  background: rgba(205, 127, 47, 0.12); color: #cd7f2f;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.15rem; margin-bottom: 1rem;
+}
+.proj-feature h3 { margin: 0 0 0.5rem; font-size: 1.02rem; color: #242d63; }
+.proj-feature p { margin: 0; font-size: 0.88rem; color: #5b6478; line-height: 1.65; }
+
+.proj-area-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; max-width: 1000px; margin: 0 auto; }
+@media (min-width: 768px) { .proj-area-grid { grid-template-columns: repeat(4, 1fr); } }
+.proj-area-card {
+  background: #fff; border-radius: 14px; padding: 1.5rem 1.15rem; text-align: center;
+  border: 1px solid #e5e8f2; box-shadow: 0 8px 28px rgba(36, 45, 99, 0.07);
+  border-top: 4px solid #cd7f2f;
+}
+.proj-area-card span { display: block; font-size: 0.7rem; color: #cd7f2f; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.4rem; }
+.proj-area-card strong { display: block; font-size: 1.2rem; color: #242d63; margin-bottom: 0.35rem; }
+.proj-area-card p { margin: 0; font-size: 0.8rem; color: #5b6478; line-height: 1.5; }
+
+.proj-quote {
+  max-width: 44rem; margin: 0 auto 2.5rem; padding: 1.75rem 2rem;
+  background: #fff; border-radius: 16px; border-left: 4px solid #cd7f2f;
+  box-shadow: 0 8px 28px rgba(36, 45, 99, 0.06);
+  font-size: 1.08rem; line-height: 1.75; color: #3d4660; font-style: italic; text-align: center;
+}
+
+.proj-eoi-banner {
+  max-width: 680px; margin: 0 auto 2.5rem; padding: 1.5rem 2rem;
+  background: linear-gradient(135deg, rgba(205,127,47,0.14) 0%, rgba(205,127,47,0.06) 100%);
+  border: 1px solid rgba(205, 127, 47, 0.35); border-radius: 16px; text-align: center;
+}
+.proj-eoi-banner strong { display: block; font-size: 1.35rem; color: #cd7f2f; margin-bottom: 0.4rem; }
+.proj-eoi-banner span { font-size: 0.9rem; color: #5b6478; }
+
+.proj-steps { display: grid; gap: 1.25rem; max-width: 1000px; margin: 0 auto; }
+@media (min-width: 768px) { .proj-steps { grid-template-columns: repeat(4, 1fr); } }
+.proj-step {
+  background: #fff; border-radius: 14px; padding: 1.6rem 1.25rem;
+  border: 1px solid #e5e8f2; box-shadow: 0 6px 24px rgba(36, 45, 99, 0.06);
+}
+.proj-step-num {
+  width: 2.25rem; height: 2.25rem; border-radius: 50%;
+  background: linear-gradient(135deg, #242d63, #cd7f2f); color: #fff;
+  font-weight: 700; display: flex; align-items: center; justify-content: center;
+  margin-bottom: 0.85rem; font-size: 0.85rem;
+}
+.proj-step h3 { margin: 0 0 0.5rem; font-size: 0.95rem; color: #242d63; }
+.proj-step p { margin: 0; font-size: 0.85rem; color: #5b6478; line-height: 1.6; }
+
+.proj-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; margin-top: 1.75rem; }
+.proj-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  padding: 0.9rem 1.6rem; border-radius: 999px; font-weight: 700; font-size: 0.9rem;
+  text-decoration: none; transition: 0.25s ease; border: none; cursor: pointer;
+  font-family: "DM Sans", system-ui, sans-serif;
+}
+.proj-btn-primary { background: #242d63; color: #fff; box-shadow: 0 6px 20px rgba(36, 45, 99, 0.35); }
+.proj-btn-primary:hover { background: #1a2340; color: #fff; transform: translateY(-2px); }
+.proj-btn-outline { border: 2px solid #242d63; color: #242d63; background: transparent; }
+.proj-btn-outline:hover { background: #242d63; color: #fff; }
+.proj-btn-wa { background: #25d366; color: #fff; box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35); }
+.proj-btn-wa:hover { background: #1da851; color: #fff; transform: translateY(-2px); }
+
+.proj-cta {
+  position: relative; text-align: center; color: #fff;
+  padding: clamp(3.5rem, 7vw, 5rem) 0; overflow: hidden;
+}
+.proj-cta-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background: #CD7F2F;
+}
+.proj-cta .site-shell { position: relative; z-index: 1; }
+.proj-cta h2 { color: #fff; margin: 0 0 0.85rem; font-size: clamp(1.75rem, 3.5vw, 2.35rem); }
+.proj-cta p { color: rgba(255, 255, 255, 0.88); max-width: 36rem; margin: 0 auto 1.75rem; line-height: 1.75; }
+.proj-cta .proj-btn-outline { border-color: #242d63; background: #242d63; color: #fff; }
+.proj-cta .proj-btn-outline:hover { background: #1a2340; color: #fff; border-color: #1a2340; }
+
+/* Footer */
+.site-footer { background-color: #242d63 !important; color: #fff; border-top: none; }
+.site-footer .footer-logo { filter: brightness(0) invert(1); }
+.site-footer h3 { color: #fff; }
+.site-footer p, .site-footer li, .site-footer span, .site-footer a { color: rgba(255, 255, 255, 0.85); text-decoration: none; }
+.site-footer a:hover { color: #cd7f2f; }
+.site-footer .footer-divider { border-color: rgba(255, 255, 255, 0.15); }
+.site-footer .footer-copy { color: rgba(255, 255, 255, 0.55); }
+.site-footer .footer-social a { background: rgba(255, 255, 255, 0.12); color: #fff; }
+.site-footer .footer-social a:hover { background: #cd7f2f; }
+  </style>
+</head>
+<body class="inner-page bg-white font-sansBrand">
+
+  <header id="navbar" class="w-full h-[125px] header-at-top transition-all duration-300">
+    <div class="relative h-full flex items-center justify-between site-shell">
+      <nav class="site-nav-pill hidden lg:flex items-center gap-1 flex-1" aria-label="Main navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="properties.html" class="nav-link text-brandGold">Properties</a>
+        <a href="#" class="nav-link">Blog</a>
+      </nav>
+      <a href="index.html" class="navbar-logo absolute left-1/2 -translate-x-1/2">
+        <img src="./logo/grasp-logo.png" alt="GRASP Logo" class="h-[4.75rem] md:h-28 w-auto object-contain" />
+      </a>
+      <div class="navbar-actions flex items-center justify-end gap-4 flex-1">
+        <a href="contact.html" class="nav-cta-btn hidden md:inline-flex">Get A Quote</a>
+        <button id="menuToggle" class="relative w-9 h-7 flex flex-col items-center justify-center gap-1.5 z-[10001]" aria-label="Open menu">
+          <span class="menu-line line-1 block w-full h-[2px]"></span>
+          <span class="menu-line line-2 block w-full h-[2px]"></span>
+          <span class="menu-line line-3 block w-full h-[2px]"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="page-banner" aria-label="NVG Seattle">
+    <div class="site-shell">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a><span>/</span>
+        <a href="properties.html">Properties</a><span>/</span>
+        <span>NVG Seattle</span>
+      </nav>
+      <p class="section-kicker" style="color:#cd7f2f;margin-bottom:0.75rem;">Pre-Launch · Artistic Skyline</p>
+      <h1>NVG Seattle</h1>
+      <p>A seamless blend of modern design and intelligent planning in North Bengaluru — where the Artistic Skyline Marketing Pavilion embodies the vision of future city living.</p>
+    </div>
+  </section>
+
+  <main class="page-main w-full max-w-full overflow-x-hidden">
+    <section class="page-section" id="overview">
+      <div class="site-shell">
+        <div class="proj-overview">
+          <div>
+            <p class="section-kicker mb-3">Marketing Pavilion</p>
+            <h2 class="section-title">Artistic <em>Skyline</em></h2>
+            <p class="proj-lead">The Artistic Skyline Pavilion is more than a marketing office — it embodies the spirit of the future development. Every step tells a story where art meets architecture.</p>
+            <p class="proj-lead">NVG Seattle blends bold architectural massing with immersive interiors — vertical forms, layered light, and reflective materials creating a modern, iconic landmark in North Bengaluru.</p>
+          </div>
+          <div class="proj-stats">
+            <div class="proj-stat"><strong>11,430</strong><span>Sq.Ft. Site Area</span></div>
+            <div class="proj-stat"><strong>3,907</strong><span>Sq.Ft. Pavilion</span></div>
+            <div class="proj-stat"><strong>1,285</strong><span>Sq.Ft. 3 BHK</span></div>
+            <div class="proj-stat"><strong>₹1L</strong><span>Refundable EOI</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section soft" id="location">
+      <div class="site-shell">
+        <div class="section-head">
+          <p class="section-kicker mb-3">Site Experience</p>
+          <h2 class="section-title">North Bengaluru <em>Advantage</em></h2>
+          <p class="section-sub">Strategically located on a 100-ft main road in one of North Bengaluru’s most established and rapidly appreciating residential hubs.</p>
+        </div>
+        <div class="proj-features">
+          <article class="proj-feature"><i class="fa-solid fa-road"></i><h3>100-Ft Main Road</h3><p>Excellent connectivity with wide frontage and strong visibility in a high-growth corridor.</p></article>
+          <article class="proj-feature"><i class="fa-solid fa-compass"></i><h3>North-East Facing</h3><p>Energy-efficient planning with passive daylighting and reduced heat gain.</p></article>
+          <article class="proj-feature"><i class="fa-solid fa-sun"></i><h3>Light &amp; Ventilation</h3><p>Natural light and cross-ventilation across spacious, comfortable residences.</p></article>
+          <article class="proj-feature"><i class="fa-solid fa-chart-line"></i><h3>High Appreciation</h3><p>Rapidly appreciating micro-market with strong end-user and investor interest.</p></article>
+          <article class="proj-feature"><i class="fa-solid fa-plane"></i><h3>Airport Influence Zone</h3><p>Part of the airport-led North Bengaluru growth story.</p></article>
+          <article class="proj-feature"><i class="fa-solid fa-map"></i><h3>3,000-Acre BDA Layout</h3><p>Major planned development strengthening long-term infrastructure.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section" id="scale">
+      <div class="site-shell">
+        <div class="section-head">
+          <p class="section-kicker mb-3">Area Planning</p>
+          <h2 class="section-title">Project <em>Scale</em></h2>
+        </div>
+        <div class="proj-area-grid">
+          <article class="proj-area-card"><span>Site Area</span><strong>1,062 sq.m</strong><p>11,430 sq.ft footprint</p></article>
+          <article class="proj-area-card"><span>Marketing Pavilion</span><strong>363 sq.m</strong><p>3,907 sq.ft experience centre</p></article>
+          <article class="proj-area-card"><span>Landscape &amp; Parking</span><strong>336 sq.m</strong><p>3,616 sq.ft green &amp; parking</p></article>
+          <article class="proj-area-card"><span>3 BHK North Facing</span><strong>1,285 sq.ft</strong><p>Premium residence layout</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section cream" id="design">
+      <div class="site-shell">
+        <div class="section-head">
+          <p class="section-kicker mb-3">Design Language</p>
+          <h2 class="section-title">Artistic Skyline <em>Theme</em></h2>
+        </div>
+        <blockquote class="proj-quote">Great design isn't just what you see — it's what you feel every time you step into a space that truly reflects you.</blockquote>
+        <div class="proj-features">
+          <article class="proj-feature"><i class="fa-solid fa-building"></i><h3>Landmark Facade</h3><p>Metal and perforated panels with depth and reflection — a distinctive urban presence.</p></article>
+          <article class="proj-feature"><i class="fa-solid fa-gem"></i><h3>Material Play</h3><p>Glass, mirrors, and metallic finishes create immersive interior depth.</p></article>
+          <article class="proj-feature"><i class="fa-solid fa-mug-saucer"></i><h3>Coffee Bar &amp; Model Home</h3><p>Marketing pavilion with coffee bar zoning and curated spatial experience.</p></article>
+          <article class="proj-feature"><i class="fa-solid fa-wand-magic-sparkles"></i><h3>Modern &amp; Aspirational</h3><p>A design language of ambition, progress, and elegance.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section soft" id="eoi">
+      <div class="site-shell">
+        <div class="section-head">
+          <p class="section-kicker mb-3">Pre-Launch Entry</p>
+          <h2 class="section-title">Why EOI <em>Matters</em></h2>
+        </div>
+        <div class="proj-eoi-banner">
+          <strong>₹1,00,000 Fully Refundable EOI</strong>
+          <span>Non-bankable cheque · Priority unit selection · First-right-of-refusal window</span>
+        </div>
+        <div class="proj-steps">
+          <article class="proj-step"><div class="proj-step-num">01</div><h3>Submit EOI</h3><p>Share your ₹1 lakh fully refundable non-bankable cheque to register interest.</p></article>
+          <article class="proj-step"><div class="proj-step-num">02</div><h3>Priority Access</h3><p>Stay ahead for updates, selection windows, and next-stage communication.</p></article>
+          <article class="proj-step"><div class="proj-step-num">03</div><h3>Register Intent</h3><p>Confirm your interest in the pre-launch window.</p></article>
+          <article class="proj-step"><div class="proj-step-num">04</div><h3>Secure Access</h3><p>Gain first-right-of-refusal during the priority selection window.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="proj-cta">
+      <div class="proj-cta-bg" aria-hidden="true"></div>
+      <div class="site-shell">
+        <h2>Request NVG Seattle Details</h2>
+        <p>Talk to our experts for pre-launch details, location insights, and priority EOI access.</p>
+        <div class="proj-actions">
+          <a href="properties.html" class="proj-btn proj-btn-outline">All Projects</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer bg-[#242d63] font-sans">
+    <div class="site-shell py-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div>
+          <img src="./logo/grasp-logo.png" alt="GRASP Realtors Logo" class="footer-logo h-20 w-auto mb-5 object-contain" />
+          <p class="leading-7 mb-6">GRASP Realtors helps you find verified properties with transparent guidance, smart location insights, and professional real estate support.</p>
+        </div>
+        <div>
+          <h3 class="text-xl font-serifBrand mb-6 font-semibold">Quick Links</h3>
+          <ul class="space-y-4">
+            <li><a href="index.html" class="hover:text-brandGold transition">Home</a></li>
+            <li><a href="about.html" class="hover:text-brandGold transition">About</a></li>
+            <li><a href="properties.html" class="hover:text-brandGold transition">Properties</a></li>
+            <li><a href="#" class="hover:text-brandGold transition">Blog</a></li>
+            <li><a href="contact.html" class="hover:text-brandGold transition">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xl font-serifBrand mb-6 font-semibold">Our Services</h3>
+          <ul class="space-y-4">
+            <li><a href="#" class="hover:text-brandGold transition">Property Buying</a></li>
+            <li><a href="#" class="hover:text-brandGold transition">Property Selling</a></li>
+            <li><a href="#" class="hover:text-brandGold transition">Investment Guidance</a></li>
+            <li><a href="#" class="hover:text-brandGold transition">Commercial Properties</a></li>
+            <li><a href="#" class="hover:text-brandGold transition">Document Support</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xl font-serifBrand mb-6 font-semibold">Contact Us</h3>
+          <ul class="space-y-5">
+            <li class="flex gap-3"><i class="fa-solid fa-location-dot text-brandGold mt-1"></i><span>#15, 4th B Main Road, Nagarbhavi Main Road<br />Kalyan Nagar, Bangalore, Karnataka 560040<br />India</span></li>
+            <li class="flex gap-3"><i class="fa-solid fa-phone text-brandGold mt-1"></i><a href="tel:+917996363331" class="hover:text-brandGold transition">+91 79963 63331</a></li>
+            <li class="flex gap-3"><i class="fa-solid fa-envelope text-brandGold mt-1"></i><a href="mailto:info@grasprealtors.com" class="hover:text-brandGold transition">info@grasprealtors.com</a></li>
+          </ul>
+          <div class="footer-social flex gap-4 mt-6">
+            <a href="https://www.instagram.com/grasprealtors/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 flex items-center justify-center transition" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/share/1BEY3osQYy/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 flex items-center justify-center transition" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com/company/grasprealtors" target="_blank" rel="noopener noreferrer" class="w-10 h-10 flex items-center justify-center transition" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://www.youtube.com/@grasprealtors" target="_blank" rel="noopener noreferrer" class="w-10 h-10 flex items-center justify-center transition" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-divider border-t mt-12 pt-6 flex flex-col md:flex-row justify-between gap-4 footer-copy text-sm">
+        <p>© 2026 GRASP Realtors. All Rights Reserved.</p>
+        <p>Designed for premium real estate experiences.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FULL SCREEN MENU -->
+  <section id="menuOverlay" class="fixed inset-0 z-[10000] invisible opacity-0 transition-opacity duration-500" aria-hidden="true">
+    <div class="menu-overlay-inner">
+      <div class="menu-media menu-media--peek" aria-hidden="true"><div class="menu-media-overlay"></div></div>
+      <div id="menuPanel" class="min-h-full bg-white text-brandBlue px-7 md:px-12 py-10 md:py-14 translate-x-full transition-transform duration-500 ease-in-out overflow-y-auto">
+        <div class="flex items-center justify-between mb-8">
+          <a href="index.html" class="menu-panel-logo" aria-label="GRASP Realtors home"><img src="./logo/grasp-logo.png" alt="GRASP Realtors" /></a>
+          <button id="menuClose" class="text-3xl leading-none text-brandBlue hover:text-brandGold transition" aria-label="Close menu">&times;</button>
+        </div>
+        <ul class="space-y-1">
+          <li><a href="index.html" class="menu-nav-link">Home</a></li>
+          <li><a href="about.html" class="menu-nav-link">About</a></li>
+          <li><a href="properties.html" class="menu-nav-link">Properties</a></li>
+          <li><a href="#" class="menu-nav-link">Blog</a></li>
+          <li><a href="contact.html" class="menu-nav-link">Contact</a></li>
+        </ul>
+        <a href="contact.html" class="nav-cta-btn menu-cta-btn">Get A Quote</a>
+        <div class="menu-social">
+          <p class="menu-social-label">Follow Us</p>
+          <div class="menu-social-links">
+            <a href="https://www.instagram.com/grasprealtors/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/share/1BEY3osQYy/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com/company/grasprealtors" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://www.youtube.com/@grasprealtors" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+(function () {
+  var navbar = document.getElementById("navbar");
+  var menuToggle = document.getElementById("menuToggle");
+  var menuClose = document.getElementById("menuClose");
+  var menuOverlay = document.getElementById("menuOverlay");
+  var menuPanel = document.getElementById("menuPanel");
+  if (!navbar) return;
+  var menuIsOpen = false, lastScrollY = window.scrollY, scrollDelta = 8;
+  function updateNavbar() {
+    var y = window.scrollY;
+    if (y > 40) { navbar.classList.add("header-scrolled"); navbar.classList.remove("header-at-top"); }
+    else { navbar.classList.remove("header-scrolled"); navbar.classList.add("header-at-top"); navbar.classList.remove("navbar-hidden"); }
+    if (!menuIsOpen && y > 80) {
+      if (y > lastScrollY + scrollDelta) navbar.classList.add("navbar-hidden");
+      else if (y < lastScrollY - scrollDelta) navbar.classList.remove("navbar-hidden");
+    }
+    lastScrollY = y;
+  }
+  updateNavbar();
+  window.addEventListener("scroll", updateNavbar, { passive: true });
+  function closeMenu() {
+    menuIsOpen = false; updateNavbar();
+    if (menuToggle) menuToggle.classList.remove("menu-open");
+    if (menuOverlay) { menuOverlay.classList.add("opacity-0"); setTimeout(function(){ menuOverlay.classList.add("invisible"); menuOverlay.setAttribute("aria-hidden","true"); }, 500); }
+    if (menuPanel) menuPanel.classList.add("translate-x-full");
+    document.body.style.overflow = "auto";
+  }
+  if (menuToggle && menuOverlay && menuPanel) {
+    menuToggle.addEventListener("click", function () {
+      menuIsOpen = !menuIsOpen;
+      menuToggle.classList.toggle("menu-open");
+      if (menuIsOpen) {
+        navbar.classList.remove("navbar-hidden");
+        menuOverlay.classList.remove("invisible", "opacity-0");
+        menuOverlay.setAttribute("aria-hidden", "false");
+        menuPanel.classList.remove("translate-x-full");
+        document.body.style.overflow = "hidden";
+      } else closeMenu();
+    });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && menuIsOpen) closeMenu(); });
+  }
+  if (menuClose) menuClose.addEventListener("click", closeMenu);
+  var menuMedia = menuOverlay && menuOverlay.querySelector(".menu-media");
+  if (menuMedia) menuMedia.addEventListener("click", closeMenu);
+})();
+  </script>
+</body>
+</html>
