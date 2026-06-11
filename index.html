@@ -2894,6 +2894,42 @@
     transform: translateY(0);
   }
 
+  @media (max-width: 767px), (hover: none) {
+    .team-card {
+      height: auto;
+      min-height: 420px;
+    }
+
+    .team-card-overlay {
+      background: linear-gradient(
+        180deg,
+        rgba(20, 24, 40, 0.15) 0%,
+        rgba(20, 24, 40, 0.35) 28%,
+        rgba(20, 24, 40, 0.72) 58%,
+        rgba(20, 24, 40, 0.95) 100%
+      );
+    }
+
+    .team-card-contact {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .team-card-meta {
+      margin-top: 0.75rem;
+      max-height: none;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .team-card-bio {
+      margin-top: 0.55rem;
+      max-height: none;
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   .home-founders-dots {
     display: flex;
     justify-content: center;
