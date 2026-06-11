@@ -6,7 +6,7 @@
   <title>GRASP Realtors</title>
   <link
     rel="preload"
-    href="./video/13240171_1920_1080_60fps.mp4"
+    href="./video/Firefly%20Create%20a%20cinematic%20real%20estate%20walkthrough%20video%20of%20a%20modern%20luxury%20house%2C%20starting%20from%20the.mp4"
     as="video"
     type="video/mp4"
     fetchpriority="high"
@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   />
   <link
@@ -36,11 +36,11 @@
             brandWhite: "#ffffff",
           },
           fontFamily: {
-            sans: ["DM Sans", "system-ui", "sans-serif"],
-            display: ["Playfair Display", "Georgia", "serif"],
-            serif: ["Playfair Display", "Georgia", "serif"],
-            serifBrand: ["Playfair Display", "Georgia", "serif"],
-            sansBrand: ["DM Sans", "system-ui", "sans-serif"],
+            sans: ["Montserrat", "system-ui", "sans-serif"],
+            display: ["Montserrat", "system-ui", "sans-serif"],
+            serif: ["Montserrat", "system-ui", "sans-serif"],
+            serifBrand: ["Montserrat", "system-ui", "sans-serif"],
+            sansBrand: ["Montserrat", "system-ui", "sans-serif"],
           },
         },
       },
@@ -51,8 +51,8 @@
     :root {
       --brand-navy: #242d63;
       --brand-gold: #cd7f2f;
-      --font-display: "Playfair Display", Georgia, serif;
-      --font-body: "DM Sans", system-ui, sans-serif;
+      --font-display: "Montserrat", system-ui, sans-serif;
+      --font-body: "Montserrat", system-ui, sans-serif;
     }
 
     html,
@@ -135,7 +135,8 @@
 
     .section-title em,
     .section-title .text-accent {
-      font-style: italic;
+      font-style: normal;
+      font-weight: 700;
       color: var(--brand-gold);
     }
 
@@ -289,9 +290,9 @@
     }
 
     .hero-light .hero-headline em {
-      font-style: italic;
+      font-style: normal;
       color: var(--brand-gold);
-      font-weight: 500;
+      font-weight: 700;
     }
 
     .hero-light .hero-sub {
@@ -800,14 +801,14 @@
       border-radius: 8px;
       font-weight: 700;
       font-size: 0.85rem;
-      font-family: "DM Sans", system-ui, sans-serif;
+      font-family: "Montserrat", system-ui, sans-serif;
       transition: 0.25s ease;
     }
 
     .fusion-btn-primary {
       background: #242d63;
       color: #fff;
-      font-family: "DM Sans", system-ui, sans-serif;
+      font-family: "Montserrat", system-ui, sans-serif;
     }
 
     .fusion-btn-primary:hover { background: #1a2340; color: #fff; }
@@ -1117,8 +1118,8 @@
 
     .fusion-footer-cta {
       background: #eef1fa;
-      padding: 3rem 0;
-      margin-top: 2rem;
+      padding: clamp(2.5rem, 5vw, 3.5rem) 0;
+      margin-top: 0;
     }
 
     .fusion-footer-cta-inner {
@@ -1128,12 +1129,121 @@
       align-items: center;
       background: #fff;
       border-radius: 16px;
-      padding: 2rem;
-      box-shadow: 0 12px 40px rgba(36, 45, 99, 0.08);
+      padding: clamp(2rem, 4vw, 2.75rem) clamp(1.5rem, 4vw, 3rem);
+      box-shadow: 0 12px 40px rgba(36, 45, 99, 0.1);
     }
 
     @media (min-width: 768px) {
-      .fusion-footer-cta-inner { grid-template-columns: 1fr auto; padding: 2.5rem 3rem; }
+      .fusion-footer-cta-inner {
+        grid-template-columns: 1fr auto;
+        gap: 2.5rem;
+        padding: 2.5rem 2.5rem 2.5rem 3rem;
+      }
+    }
+
+    .fusion-footer-cta-kicker {
+      display: block;
+      width: 48px;
+      height: 3px;
+      background: #cd7f2f;
+      margin-bottom: 1.25rem;
+    }
+
+    .fusion-footer-cta-title {
+      font-family: var(--font-display);
+      color: #242d63;
+      font-size: clamp(1.65rem, 3vw, 2.35rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin: 0 0 1rem;
+      max-width: 22rem;
+    }
+
+    .fusion-footer-cta-text {
+      font-family: var(--font-body);
+      color: #6b7289;
+      font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+      line-height: 1.75;
+      margin: 0 0 1.75rem;
+      max-width: 26rem;
+    }
+
+    .fusion-footer-cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+
+    .fusion-footer-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      padding: 0.85rem 1.5rem;
+      border-radius: 999px;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+    }
+
+    .fusion-footer-cta-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .fusion-footer-cta-btn-primary {
+      background: #242d63;
+      color: #fff;
+    }
+
+    .fusion-footer-cta-btn-primary:hover {
+      background: #1a2340;
+      color: #fff;
+    }
+
+    .fusion-footer-cta-btn-outline {
+      background: #fff;
+      border: 2px solid #cd7f2f;
+      color: #cd7f2f;
+    }
+
+    .fusion-footer-cta-btn-outline:hover {
+      background: #cd7f2f;
+      color: #fff;
+    }
+
+    .fusion-footer-cta-visual {
+      width: clamp(220px, 32vw, 300px);
+      margin: 0 auto;
+      justify-self: center;
+    }
+
+    .fusion-footer-cta-logo-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      aspect-ratio: 1;
+      padding: clamp(1.5rem, 4vw, 2.25rem);
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 12px 32px rgba(36, 45, 99, 0.1);
+      border: 1px solid #eef1f8;
+    }
+
+    .fusion-footer-cta-logo {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    @media (min-width: 768px) {
+      .fusion-footer-cta-visual {
+        margin: 0;
+        justify-self: end;
+      }
     }
 
     .fusion-newsletter {
@@ -1253,9 +1363,10 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="./css/grasp-fonts.css" />
 </head>
 
-<body class="has-hero bg-white font-serifBrand is-loading">
+<body class="has-hero bg-white font-sansBrand is-loading">
 
   <div id="pageLoader" class="page-loader" role="status" aria-live="polite" aria-label="Loading website">
     <div class="page-loader-inner">
@@ -1309,7 +1420,7 @@
       <video
         id="heroVideo"
         class="hero-video absolute inset-0 w-full h-full object-cover z-0"
-        src="./video/13240171_1920_1080_60fps.mp4"
+        src="./video/Firefly%20Create%20a%20cinematic%20real%20estate%20walkthrough%20video%20of%20a%20modern%20luxury%20house%2C%20starting%20from%20the.mp4"
         autoplay
         muted
         loop
@@ -1355,7 +1466,7 @@
 
       <div class="menu-media" aria-hidden="true">
         <video autoplay muted loop playsinline>
-          <source src="./video/13240171_1920_1080_60fps.mp4" type="video/mp4" />
+          <source src="./video/Firefly%20Create%20a%20cinematic%20real%20estate%20walkthrough%20video%20of%20a%20modern%20luxury%20house%2C%20starting%20from%20the.mp4" type="video/mp4" />
         </video>
         <div class="menu-media-overlay"></div>
       </div>
@@ -1413,240 +1524,134 @@
 />
 
 <!-- WHY CHOOSE US SECTION -->
-<section class="why-choose-unique" id="services">
-  <div class="why-choose-shell">
-    <div class="why-choose-header scroll-reveal-text">
-      <p class="why-choose-kicker section-kicker">Why GRASP?</p>
-      <h2 class="section-title">Built For Smarter <em>Real Estate</em> Decisions</h2>
-    </div>
+<section class="why-grasp" id="services">
+  <div class="site-shell">
+    <h2 class="why-grasp-title scroll-reveal-text">Why GRASP?</h2>
 
-    <div class="why-choose-strip">
-      <div class="why-choose-glow"></div>
-      <div class="why-choose-cards scroll-reveal-stagger">
+    <div class="why-grasp-row scroll-reveal-stagger">
+      <article class="why-grasp-item scroll-reveal-item">
+        <div class="why-grasp-icon"><i class="fa-solid fa-house-circle-check" aria-hidden="true"></i></div>
+        <h3>Verified Properties</h3>
+        <p>Checked approvals, documents, and pricing.</p>
+      </article>
 
-        <article class="why-choose-card scroll-reveal-item">
-          <span class="why-choose-step">01</span>
-          <div class="why-choose-icon">
-            <i class="fa-solid fa-house-circle-check" aria-hidden="true"></i>
-          </div>
-          <h3>Verified Properties</h3>
-          <p>Every listing is checked for approvals, documents, and realistic pricing.</p>
-        </article>
+      <article class="why-grasp-item scroll-reveal-item">
+        <div class="why-grasp-icon"><i class="fa-solid fa-handshake" aria-hidden="true"></i></div>
+        <h3>Expert Guidance</h3>
+        <p>One team with you from enquiry to keys.</p>
+      </article>
 
-        <article class="why-choose-card scroll-reveal-item">
-          <span class="why-choose-step">02</span>
-          <div class="why-choose-icon">
-            <i class="fa-solid fa-handshake" aria-hidden="true"></i>
-          </div>
-          <h3>Expert Guidance</h3>
-          <p>From first call to key handover, one team stays with you throughout.</p>
-        </article>
+      <article class="why-grasp-item scroll-reveal-item">
+        <div class="why-grasp-icon"><i class="fa-solid fa-file-circle-check" aria-hidden="true"></i></div>
+        <h3>Clear Documentation</h3>
+        <p>Simple, transparent legal clarity.</p>
+      </article>
 
-        <article class="why-choose-card scroll-reveal-item">
-          <span class="why-choose-step">03</span>
-          <div class="why-choose-icon">
-            <i class="fa-solid fa-file-circle-check" aria-hidden="true"></i>
-          </div>
-          <h3>Clear Documentation</h3>
-          <p>We simplify legal terms so you know exactly what you are signing.</p>
-        </article>
-
-        <article class="why-choose-card scroll-reveal-item">
-          <span class="why-choose-step">04</span>
-          <div class="why-choose-icon">
-            <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
-          </div>
-          <h3>Market-Ready Insights</h3>
-          <p>Area trends, rental yield, and growth potential before you invest.</p>
-        </article>
-
-      </div>
+      <article class="why-grasp-item scroll-reveal-item">
+        <div class="why-grasp-icon"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></div>
+        <h3>Market Insights</h3>
+        <p>Trends and growth before you invest.</p>
+      </article>
     </div>
   </div>
 </section>
 
 <style>
-  .why-choose-unique {
+  .why-grasp {
+    padding: clamp(3rem, 6vw, 4.5rem) 0;
     background: #f4f6fc;
-    padding: clamp(4rem, 8vw, 6.5rem) 0;
   }
 
-  .why-choose-unique .why-choose-header .section-title {
-    font-size: clamp(2.25rem, 5vw, 3.75rem);
-  }
-
-  .why-choose-unique h2 {
-    margin: 0;
-  }
-
-  .why-choose-unique h3 {
-    font-family: var(--font-display);
-    color: var(--brand-navy);
-  }
-
-  .why-choose-unique p,
-  .why-choose-unique span {
-    font-family: var(--font-body);
-  }
-
-  .why-choose-shell {
-    width: 100%;
-    max-width: 1240px;
-    margin: 0 auto;
-    padding-inline: clamp(1rem, 4vw, 2.5rem);
-  }
-
-  .why-choose-header {
+  .why-grasp-title {
+    margin: 0 0 clamp(2rem, 4vw, 2.75rem);
     text-align: center;
-    margin-bottom: clamp(3rem, 6vw, 4rem);
-  }
-
-  .why-choose-kicker {
-    margin: 0 0 1rem;
-    letter-spacing: 0.4em;
-    text-transform: uppercase;
-    font-size: clamp(0.85rem, 2vw, 1.05rem);
+    font-family: var(--font-body);
+    font-size: clamp(1.75rem, 3.5vw, 2.35rem);
     font-weight: 700;
-    color: #cd7f2f;
+    color: #242d63;
+    letter-spacing: -0.02em;
   }
 
-  .why-choose-header h2 {
-    margin: 0;
-  }
-
-  .why-choose-strip {
-    position: relative;
-    border-radius: 999px;
-    padding: 0.18rem;
-    background: linear-gradient(90deg, #cd7f2f, #242d63);
-    overflow: hidden;
-  }
-
-  .why-choose-glow {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.12), transparent 60%),
-                radial-gradient(circle at 80% 100%, rgba(0, 0, 0, 0.06), transparent 55%);
-    mix-blend-mode: screen;
-    pointer-events: none;
-  }
-
-  .why-choose-cards {
-    position: relative;
+  .why-grasp-row {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 0;
-    border-radius: 999px;
-    background: linear-gradient(135deg, #ffffff, #eef1f8);
-    padding: 2rem 2.2rem;
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(36, 45, 99, 0.08);
+    overflow: hidden;
   }
 
-  .why-choose-card {
-    position: relative;
-    padding: 0 1.25rem;
+  .why-grasp-item {
+    padding: clamp(1.5rem, 3vw, 2rem) clamp(1rem, 2vw, 1.5rem);
     text-align: center;
+    border-right: 1px solid #eef1f8;
   }
 
-  .why-choose-card:nth-child(2),
-  .why-choose-card:nth-child(3) {
-    border-left: 1px solid rgba(15, 23, 42, 0.06);
-    border-right: 1px solid rgba(15, 23, 42, 0.06);
+  .why-grasp-item:last-child {
+    border-right: none;
   }
 
-  .why-choose-step {
-    display: inline-block;
-    font-size: 0.7rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(15, 23, 42, 0.55);
-    font-weight: 700;
-    margin-bottom: 0.4rem;
-  }
-
-  .why-choose-icon {
-    width: 56px;
-    height: 56px;
-    border-radius: 999px;
+  .why-grasp-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 1rem;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 1rem;
-    background: linear-gradient(135deg, #242d63, #3f57a6);
-    color: #ffffff;
-    box-shadow: 0 10px 22px rgba(15, 23, 42, 0.3);
-    font-size: 1.65rem;
+    background: #242d63;
+    color: #fff;
+    font-size: 1.2rem;
   }
 
-  .why-choose-card:nth-child(2) .why-choose-icon {
-    background: linear-gradient(135deg, #0fa89e, #1f96be);
+  .why-grasp-item:nth-child(2) .why-grasp-icon,
+  .why-grasp-item:nth-child(4) .why-grasp-icon {
+    background: #cd7f2f;
   }
 
-  .why-choose-card:nth-child(3) .why-choose-icon {
-    background: linear-gradient(135deg, #b77b28, #cd7f2f);
-  }
-
-  .why-choose-card:nth-child(4) .why-choose-icon {
-    background: linear-gradient(135deg, #1f3c89, #00a0ff);
-  }
-
-  .why-choose-card h3 {
-    margin: 0 0 0.5rem;
-    font-size: clamp(1.1rem, 2vw, 1.35rem);
-    font-weight: 600;
-    font-family: var(--font-display);
+  .why-grasp-item h3 {
+    margin: 0 0 0.45rem;
+    font-family: var(--font-body);
+    font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+    font-weight: 700;
     color: #242d63;
   }
 
-  .why-choose-card p {
+  .why-grasp-item p {
     margin: 0;
-    font-size: clamp(0.88rem, 1.5vw, 0.98rem);
-    line-height: 1.65;
-    color: #4b5563;
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: #6b7289;
   }
 
-  .why-choose-card {
-    transition: transform 0.28s ease, box-shadow 0.28s ease;
-  }
-
-  .why-choose-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 16px 32px rgba(15, 23, 42, 0.25);
-  }
-
-  @media (max-width: 1024px) {
-    .why-choose-strip {
-      border-radius: 1.5rem;
-    }
-
-    .why-choose-cards {
-      border-radius: 1.5rem;
+  @media (max-width: 900px) {
+    .why-grasp-row {
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      row-gap: 1.5rem;
-      padding: 1.6rem 1.4rem;
     }
 
-    .why-choose-card {
-      padding: 0 0.9rem;
+    .why-grasp-item:nth-child(2) {
       border-right: none;
-      border-left: none;
+    }
+
+    .why-grasp-item:nth-child(1),
+    .why-grasp-item:nth-child(2) {
+      border-bottom: 1px solid #eef1f8;
     }
   }
 
-  @media (max-width: 640px) {
-    .why-choose-strip {
-      padding: 0.12rem;
-    }
-
-    .why-choose-cards {
+  @media (max-width: 520px) {
+    .why-grasp-row {
       grid-template-columns: 1fr;
-      row-gap: 1.4rem;
-      padding: 1.4rem 1.1rem;
     }
 
-    .why-choose-card {
-      padding: 0;
-      text-align: center;
+    .why-grasp-item {
+      border-right: none;
+      border-bottom: 1px solid #eef1f8;
+    }
+
+    .why-grasp-item:last-child {
+      border-bottom: none;
     }
   }
 </style>
@@ -2150,6 +2155,149 @@
   </div>
 </section>
 
+<!-- FOUNDERS -->
+<section id="founders" class="home-founders-section font-sans">
+  <div class="site-shell">
+    <div class="home-founders-head scroll-reveal-text">
+      <h2 class="section-title home-founders-title">Meet Our Expert Agents</h2>
+      <p class="home-founders-lead">Dedicated professionals ready to help you find your perfect property.</p>
+    </div>
+
+    <div class="home-founders-carousel" id="foundersCarousel">
+      <div class="home-founders-viewport">
+        <div class="home-founders-track" id="foundersTrack">
+          <article class="team-card home-founders-member">
+            <div class="team-card-media">
+              <div class="team-card-photo is-placeholder">
+                <img src="./image/agents/akshay-gangadhar.jpg" alt="Mr Akshay Gangadhar" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('is-placeholder');" onload="this.style.display=''; this.parentElement.classList.remove('is-placeholder');" />
+                <span class="team-card-photo-fallback" aria-hidden="true"><i class="fa-solid fa-user"></i></span>
+              </div>
+              <span class="team-card-watermark" aria-hidden="true">GRASP</span>
+              <div class="team-card-overlay" aria-hidden="true"></div>
+            </div>
+            <a href="contact.html" class="team-card-contact">Contact</a>
+            <div class="team-card-info">
+              <h3>Mr Akshay Gangadhar</h3>
+              <p class="team-card-role">Founder &amp; Managing Director</p>
+              <p class="team-card-meta"><i class="fa-solid fa-house" aria-hidden="true"></i> 120+ Properties</p>
+              <p class="team-card-bio">Leading GRASP with a vision for transparent, premium real estate across Bangalore.</p>
+            </div>
+          </article>
+
+          <article class="team-card home-founders-member">
+            <div class="team-card-media">
+              <div class="team-card-photo is-placeholder">
+                <img src="./image/agents/gokul-raj.jpg" alt="Mr Gokul Raj" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('is-placeholder');" onload="this.style.display=''; this.parentElement.classList.remove('is-placeholder');" />
+                <span class="team-card-photo-fallback" aria-hidden="true"><i class="fa-solid fa-user"></i></span>
+              </div>
+              <span class="team-card-watermark" aria-hidden="true">GRASP</span>
+              <div class="team-card-overlay" aria-hidden="true"></div>
+            </div>
+            <a href="contact.html" class="team-card-contact">Contact</a>
+            <div class="team-card-info">
+              <h3>Mr Gokul Raj</h3>
+              <p class="team-card-role">Co-Founder &amp; Strategy Lead</p>
+              <p class="team-card-meta"><i class="fa-solid fa-house" aria-hidden="true"></i> 95+ Properties</p>
+              <p class="team-card-bio">Specialises in growth corridors and pre-launch investments across North Bengaluru.</p>
+            </div>
+          </article>
+
+          <article class="team-card home-founders-member">
+            <div class="team-card-media">
+              <div class="team-card-photo is-placeholder">
+                <img src="./image/agents/sridhar.jpg" alt="Mr Sridhar" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('is-placeholder');" onload="this.style.display=''; this.parentElement.classList.remove('is-placeholder');" />
+                <span class="team-card-photo-fallback" aria-hidden="true"><i class="fa-solid fa-user"></i></span>
+              </div>
+              <span class="team-card-watermark" aria-hidden="true">GRASP</span>
+              <div class="team-card-overlay" aria-hidden="true"></div>
+            </div>
+            <a href="contact.html" class="team-card-contact">Contact</a>
+            <div class="team-card-info">
+              <h3>Mr Sridhar</h3>
+              <p class="team-card-role">Co-Founder &amp; Operations Head</p>
+              <p class="team-card-meta"><i class="fa-solid fa-house" aria-hidden="true"></i> 110+ Properties</p>
+              <p class="team-card-bio">Ensures seamless project delivery, documentation clarity, and client satisfaction.</p>
+            </div>
+          </article>
+
+          <article class="team-card home-founders-member">
+            <div class="team-card-media">
+              <div class="team-card-photo is-placeholder">
+                <img src="./image/agents/prashanth-jain.jpg" alt="Mr Prashanth Jain" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('is-placeholder');" onload="this.style.display=''; this.parentElement.classList.remove('is-placeholder');" />
+                <span class="team-card-photo-fallback" aria-hidden="true"><i class="fa-solid fa-user"></i></span>
+              </div>
+              <span class="team-card-watermark" aria-hidden="true">GRASP</span>
+              <div class="team-card-overlay" aria-hidden="true"></div>
+            </div>
+            <a href="contact.html" class="team-card-contact">Contact</a>
+            <div class="team-card-info">
+              <h3>Mr Prashanth Jain</h3>
+              <p class="team-card-role">Co-Founder &amp; Sales Director</p>
+              <p class="team-card-meta"><i class="fa-solid fa-house" aria-hidden="true"></i> 140+ Properties</p>
+              <p class="team-card-bio">Guides buyers through luxury residential projects with over a decade of expertise.</p>
+            </div>
+          </article>
+
+          <article class="team-card home-founders-member">
+            <div class="team-card-media">
+              <div class="team-card-photo is-placeholder">
+                <img src="./image/agents/rakshith.jpg" alt="Mr Rakshith" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('is-placeholder');" onload="this.style.display=''; this.parentElement.classList.remove('is-placeholder');" />
+                <span class="team-card-photo-fallback" aria-hidden="true"><i class="fa-solid fa-user"></i></span>
+              </div>
+              <span class="team-card-watermark" aria-hidden="true">GRASP</span>
+              <div class="team-card-overlay" aria-hidden="true"></div>
+            </div>
+            <a href="contact.html" class="team-card-contact">Contact</a>
+            <div class="team-card-info">
+              <h3>Mr Rakshith</h3>
+              <p class="team-card-role">Co-Founder &amp; Client Relations</p>
+              <p class="team-card-meta"><i class="fa-solid fa-house" aria-hidden="true"></i> 88+ Properties</p>
+              <p class="team-card-bio">Builds lasting relationships through honest advice and end-to-end buyer support.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="home-founders-dots" id="foundersDots" aria-label="Founders carousel pagination"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="fusion-footer-cta font-sans" id="home-cta">
+  <div class="site-shell">
+    <div class="fusion-footer-cta-inner scroll-reveal-text">
+      <div class="fusion-footer-cta-content">
+        <span class="fusion-footer-cta-kicker" aria-hidden="true"></span>
+        <h2 class="fusion-footer-cta-title">Ready to Find Your Dream Property?</h2>
+        <p class="fusion-footer-cta-text">As a growing startup, we focus on quality over quantity — let our team help you find the right property in Bangalore.</p>
+        <div class="fusion-footer-cta-actions">
+          <a href="properties.html" class="fusion-footer-cta-btn fusion-footer-cta-btn-primary">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            Find a Property
+          </a>
+          <a href="contact.html" class="fusion-footer-cta-btn fusion-footer-cta-btn-outline">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+            Contact Us
+          </a>
+        </div>
+      </div>
+      <div class="fusion-footer-cta-visual">
+        <div class="fusion-footer-cta-logo-wrap">
+          <img
+            src="./logo/grasp-logo.png"
+            alt="GRASP Realtors"
+            class="fusion-footer-cta-logo"
+            width="240"
+            height="120"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <style>
   .projects-section {
     padding: clamp(4rem, 8vw, 6rem) 0;
@@ -2494,6 +2642,305 @@
     transform: translateY(-2px);
     box-shadow: 0 12px 32px rgba(205, 127, 47, 0.35);
   }
+
+  .home-founders-section {
+    padding: clamp(3.5rem, 7vw, 5.5rem) 0;
+    background: #fff;
+    overflow: hidden;
+  }
+
+  .home-founders-head {
+    text-align: left;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+  }
+
+  .home-founders-head .home-founders-title {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-style: normal;
+    text-transform: none;
+    letter-spacing: -0.02em;
+    font-size: clamp(1.85rem, 3.8vw, 2.5rem);
+    line-height: 1.2;
+    color: #1a2340;
+    margin: 0 0 0.65rem;
+  }
+
+  .home-founders-lead {
+    margin: 0;
+    font-family: var(--font-body);
+    font-weight: 400;
+    color: #6c7589;
+    font-size: clamp(0.98rem, 1.6vw, 1.12rem);
+    line-height: 1.65;
+    max-width: 34rem;
+  }
+
+  .home-founders-carousel {
+    position: relative;
+  }
+
+  .home-founders-viewport {
+    overflow: hidden;
+  }
+
+  .home-founders-track {
+    display: flex;
+    gap: 1.25rem;
+    will-change: transform;
+    transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  @media (min-width: 768px) {
+    .home-founders-track { gap: 1.5rem; }
+  }
+
+  .team-card {
+    position: relative;
+    flex: 0 0 100%;
+    min-width: 0;
+    height: clamp(420px, 58vw, 520px);
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 18px 48px rgba(36, 45, 99, 0.12);
+    background: #e8ebf3;
+  }
+
+  @media (min-width: 640px) {
+    .team-card { flex: 0 0 calc(50% - 0.75rem); }
+  }
+
+  .team-card-media {
+    position: absolute;
+    inset: 0;
+  }
+
+  .team-card-photo {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(160deg, #dce1ee 0%, #c5cce0 100%);
+    transition: transform 0.55s ease;
+  }
+
+  .team-card-photo img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .team-card-photo-fallback {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    font-size: clamp(3rem, 10vw, 4.5rem);
+    color: rgba(36, 45, 99, 0.22);
+  }
+
+  .team-card-photo.is-placeholder .team-card-photo-fallback {
+    display: flex;
+  }
+
+  .team-card-watermark {
+    position: absolute;
+    left: 50%;
+    top: 42%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 14vw, 6.5rem);
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: rgba(255, 255, 255, 0.2);
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+    z-index: 1;
+  }
+
+  .team-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(20, 24, 40, 0.05) 0%,
+      rgba(20, 24, 40, 0.08) 35%,
+      rgba(20, 24, 40, 0.55) 72%,
+      rgba(20, 24, 40, 0.88) 100%
+    );
+    transition: background 0.45s ease;
+    z-index: 2;
+  }
+
+  .team-card-contact {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    z-index: 4;
+    padding: 0.55rem 1.15rem;
+    border-radius: 999px;
+    background: #fff;
+    color: #242d63;
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.35s ease, transform 0.35s ease, background 0.25s ease, color 0.25s ease;
+  }
+
+  .team-card-contact:hover {
+    background: #cd7f2f;
+    color: #fff;
+  }
+
+  .team-card-info {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    padding: 1.5rem 1.5rem 1.65rem;
+    color: #fff;
+  }
+
+  .team-card-info h3 {
+    margin: 0 0 0.35rem;
+    font-family: var(--font-body);
+    font-size: clamp(1.2rem, 2vw, 1.45rem);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .team-card-role {
+    margin: 0;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .team-card-meta,
+  .team-card-bio {
+    margin: 0;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease, transform 0.4s ease, max-height 0.45s ease, margin 0.4s ease;
+  }
+
+  .team-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  .team-card-meta i {
+    font-size: 0.78rem;
+    opacity: 0.9;
+  }
+
+  .team-card-bio {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.82);
+  }
+
+  .team-card:hover .team-card-photo,
+  .team-card:focus-within .team-card-photo {
+    transform: scale(1.05);
+  }
+
+  .team-card:hover .team-card-overlay,
+  .team-card:focus-within .team-card-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(20, 24, 40, 0.15) 0%,
+      rgba(20, 24, 40, 0.35) 30%,
+      rgba(20, 24, 40, 0.72) 62%,
+      rgba(20, 24, 40, 0.95) 100%
+    );
+  }
+
+  .team-card:hover .team-card-contact,
+  .team-card:focus-within .team-card-contact {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .team-card:hover .team-card-meta,
+  .team-card:focus-within .team-card-meta {
+    margin-top: 0.85rem;
+    max-height: 2rem;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .team-card:hover .team-card-bio,
+  .team-card:focus-within .team-card-bio {
+    margin-top: 0.65rem;
+    max-height: 5rem;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .home-founders-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+  }
+
+  .home-founders-dots button {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background: #d1d5e4;
+    padding: 0;
+    cursor: pointer;
+    transition: background 0.25s, transform 0.25s, width 0.25s;
+  }
+
+  .home-founders-dots button.is-active {
+    background: #cd7f2f;
+    transform: scale(1.15);
+  }
+
+  .wa-float-btn {
+    position: fixed;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    z-index: 9998;
+    width: 3.25rem;
+    height: 3.25rem;
+    border-radius: 50%;
+    background: #25d366;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.65rem;
+    box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45);
+    transition: transform 0.25s ease, background 0.25s ease;
+    text-decoration: none;
+  }
+
+  .wa-float-btn:hover {
+    background: #1ebe57;
+    color: #fff;
+    transform: scale(1.06);
+  }
 </style>
 
 
@@ -2770,7 +3217,11 @@
         menuPanel.classList.remove("translate-x-full");
         document.body.style.overflow = "hidden";
         var menuVideo = menuOverlay.querySelector(".menu-media video");
-        if (menuVideo) menuVideo.play().catch(function () {});
+        if (menuVideo) {
+          menuVideo.defaultPlaybackRate = 0.6;
+          menuVideo.playbackRate = 0.6;
+          menuVideo.play().catch(function () {});
+        }
       } else {
         closeMenu();
       }
@@ -2826,9 +3277,17 @@
     (function () {
       var heroVideo = document.getElementById("heroVideo");
       if (!heroVideo) return;
+      var slowRate = 0.6;
+      function applySlowPlayback(video) {
+        video.defaultPlaybackRate = slowRate;
+        video.playbackRate = slowRate;
+      }
       function playHero() {
+        applySlowPlayback(heroVideo);
         heroVideo.play().catch(function () {});
       }
+      applySlowPlayback(heroVideo);
+      heroVideo.addEventListener("loadedmetadata", function () { applySlowPlayback(heroVideo); });
       if (heroVideo.readyState < 2) {
         heroVideo.addEventListener("canplay", playHero, { once: true });
       } else {
@@ -2932,6 +3391,15 @@
         fromRight("#projects .projects-cta-wrap", "#projects");
       }
 
+      if (document.querySelector("#founders")) {
+        fromRight("#founders .home-founders-head", "#founders");
+        staggerUp("#founders .home-founders-member", "#founders");
+      }
+
+      if (document.querySelector("#home-cta")) {
+        fromRight("#home-cta .scroll-reveal-text", "#home-cta");
+      }
+
       // Price calculator — text left, form right
       if (document.querySelector("#priceCalculator")) {
         fromLeft("#priceCalculator .scroll-reveal-img", "#priceCalculator");
@@ -2950,17 +3418,134 @@
 
   <script>
     (function () {
+      var carousel = document.getElementById("foundersCarousel");
+      var track = document.getElementById("foundersTrack");
+      var dotsWrap = document.getElementById("foundersDots");
+      if (!carousel || !track) return;
+
+      var cards = track.querySelectorAll(".home-founders-member");
+      var currentIndex = 0;
+      var autoTimer = null;
+      var isPaused = false;
+      var autoDelay = 4500;
+
+      function getVisibleCount() {
+        return window.innerWidth >= 640 ? 2 : 1;
+      }
+
+      function getMaxIndex() {
+        return Math.max(0, cards.length - getVisibleCount());
+      }
+
+      function getStepSize() {
+        if (!cards.length) return 0;
+        var card = cards[0];
+        var gap = parseFloat(getComputedStyle(track).gap) || 0;
+        return card.offsetWidth + gap;
+      }
+
+      function buildDots() {
+        if (!dotsWrap) return;
+        dotsWrap.innerHTML = "";
+        var total = getMaxIndex() + 1;
+        for (var i = 0; i < total; i++) {
+          var dot = document.createElement("button");
+          dot.type = "button";
+          dot.setAttribute("data-index", String(i));
+          dot.setAttribute("aria-label", "Go to slide " + (i + 1));
+          dot.addEventListener("click", function () {
+            var index = parseInt(this.getAttribute("data-index"), 10) || 0;
+            goTo(index, true);
+          });
+          dotsWrap.appendChild(dot);
+        }
+      }
+
+      function updateDots() {
+        if (!dotsWrap) return;
+        Array.prototype.forEach.call(dotsWrap.children, function (dot, i) {
+          dot.classList.toggle("is-active", i === currentIndex);
+        });
+      }
+
+      function goTo(index, userTriggered) {
+        currentIndex = Math.max(0, Math.min(getMaxIndex(), index));
+        track.style.transform = "translate3d(" + (-currentIndex * getStepSize()) + "px, 0, 0)";
+        updateDots();
+        if (userTriggered) restartAuto();
+      }
+
+      function nextSlide() {
+        goTo(currentIndex >= getMaxIndex() ? 0 : currentIndex + 1, false);
+      }
+
+      function startAuto() {
+        stopAuto();
+        autoTimer = window.setInterval(function () {
+          if (!isPaused) nextSlide();
+        }, autoDelay);
+      }
+
+      function stopAuto() {
+        if (autoTimer) {
+          window.clearInterval(autoTimer);
+          autoTimer = null;
+        }
+      }
+
+      function restartAuto() {
+        stopAuto();
+        startAuto();
+      }
+
+      function onResize() {
+        var max = getMaxIndex();
+        if (currentIndex > max) currentIndex = max;
+        buildDots();
+        track.style.transition = "none";
+        goTo(currentIndex, false);
+        requestAnimationFrame(function () {
+          track.style.transition = "transform 0.65s cubic-bezier(0.4, 0, 0.2, 1)";
+        });
+      }
+
+      track.style.transition = "transform 0.65s cubic-bezier(0.4, 0, 0.2, 1)";
+
+      carousel.addEventListener("mouseenter", function () { isPaused = true; });
+      carousel.addEventListener("mouseleave", function () { isPaused = false; });
+      carousel.addEventListener("focusin", function () { isPaused = true; });
+      carousel.addEventListener("focusout", function (e) {
+        if (!carousel.contains(e.relatedTarget)) isPaused = false;
+      });
+
+      window.addEventListener("resize", onResize);
+      buildDots();
+      goTo(0, false);
+      startAuto();
+    })();
+  </script>
+
+  <script>
+    (function () {
       var v = document.getElementById("heroVideo");
       var loader = document.getElementById("pageLoader");
-      var primary = "./video/13240171_1920_1080_60fps.mp4";
-      var fallback = "./video/herovideo.mp4";
+      var primary = "./video/Firefly%20Create%20a%20cinematic%20real%20estate%20walkthrough%20video%20of%20a%20modern%20luxury%20house%2C%20starting%20from%20the.mp4";
+      var fallback = "./video/7578540-hd_1920_1080_30fps.mp4";
       var minShowMs = 900;
       var maxWaitMs = 10000;
       var startedAt = Date.now();
       var loaderDone = false;
+      var slowRate = 0.6;
+
+      function applySlowPlayback(video) {
+        if (!video) return;
+        video.defaultPlaybackRate = slowRate;
+        video.playbackRate = slowRate;
+      }
 
       function playHero() {
         if (!v) return;
+        applySlowPlayback(v);
         v.play().catch(function () {});
       }
 
@@ -2987,8 +3572,16 @@
 
       if (v) {
         v.preload = "auto";
+        applySlowPlayback(v);
+        v.addEventListener("loadedmetadata", function () { applySlowPlayback(v); });
         if (!v.getAttribute("src")) v.src = primary;
         v.load();
+
+        var menuVideo = document.querySelector("#menuOverlay .menu-media video");
+        if (menuVideo) {
+          applySlowPlayback(menuVideo);
+          menuVideo.addEventListener("loadedmetadata", function () { applySlowPlayback(menuVideo); });
+        }
 
         if (v.readyState >= 3) {
           onHeroReady();
@@ -3019,6 +3612,10 @@
       });
     })();
   </script>
+
+  <a href="https://wa.me/917996363331" target="_blank" rel="noopener noreferrer" class="wa-float-btn" aria-label="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
 
 </body>
 </html>

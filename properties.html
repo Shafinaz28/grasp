@@ -6,7 +6,7 @@
   <title>Properties — GRASP Realtors</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -15,10 +15,11 @@
         extend: {
           colors: { brandBlue: "#242d63", brandGold: "#cd7f2f" },
           fontFamily: {
-            sans: ["DM Sans", "system-ui", "sans-serif"],
-            sansBrand: ["DM Sans", "system-ui", "sans-serif"],
-            serif: ["Playfair Display", "Georgia", "serif"],
-            serifBrand: ["Playfair Display", "Georgia", "serif"],
+            sans: ["Montserrat", "system-ui", "sans-serif"],
+            display: ["Montserrat", "system-ui", "sans-serif"],
+            sansBrand: ["Montserrat", "system-ui", "sans-serif"],
+            serif: ["Montserrat", "system-ui", "sans-serif"],
+            serifBrand: ["Montserrat", "system-ui", "sans-serif"],
           },
         },
       },
@@ -29,7 +30,7 @@ html, body {
   background: #ffffff;
   color: #1f2937;
   line-height: 1.5;
-  font-family: "DM Sans", system-ui, sans-serif;
+  font-family: "Montserrat", system-ui, sans-serif;
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
@@ -37,8 +38,8 @@ html, body {
 main, header, footer, section { max-width: 100%; }
 img { max-width: 100%; }
 :root {
-  --font-display: "Playfair Display", Georgia, serif;
-  --font-body: "DM Sans", system-ui, sans-serif;
+  --font-display: "Montserrat", system-ui, sans-serif;
+  --font-body: "Montserrat", system-ui, sans-serif;
   --brand-navy: #242d63;
   --brand-gold: #cd7f2f;
 }
@@ -58,7 +59,7 @@ p, a, li, span, button, label { font-family: var(--font-body); }
   font-weight: 600;
   line-height: 1.12;
 }
-.section-title em { font-style: italic; color: var(--brand-gold); }
+.section-title em { font-style: normal; font-weight: 700; color: var(--brand-gold); }
 .site-shell { width: 100%; max-width: 1240px; margin-inline: auto; padding-inline: clamp(1rem, 4vw, 2.5rem); }
 @media (max-width: 767px) {
   .site-shell { padding-inline: 1rem; }
@@ -94,7 +95,7 @@ p, a, li, span, button, label { font-family: var(--font-body); }
   display: inline-block;
   padding: 0.6rem 1.2rem;
   border-radius: 999px;
-  font-family: "DM Sans", system-ui, sans-serif;
+  font-family: "Montserrat", system-ui, sans-serif;
   font-size: clamp(0.95rem, 1.15vw, 1.1rem);
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -144,7 +145,7 @@ p, a, li, span, button, label { font-family: var(--font-body); }
   border-radius: 999px;
   background: #242d63;
   color: #ffffff !important;
-  font-family: "DM Sans", system-ui, sans-serif;
+  font-family: "Montserrat", system-ui, sans-serif;
   font-size: clamp(0.95rem, 1.15vw, 1.1rem);
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -214,7 +215,7 @@ p, a, li, span, button, label { font-family: var(--font-body); }
   color: #242d63 !important;
   padding: 0.65rem 0;
   border-bottom: 1px solid #e5e7eb;
-  font-family: "DM Sans", system-ui, sans-serif;
+  font-family: "Montserrat", system-ui, sans-serif;
   font-size: clamp(0.95rem, 1.15vw, 1.1rem);
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -254,13 +255,39 @@ p, a, li, span, button, label { font-family: var(--font-body); }
 
 .page-main { padding-top: 0; }
 .page-banner {
-  background: linear-gradient(135deg, #242d63 0%, #1a2340 100%);
-  padding: calc(125px + 3.5rem) 0 4rem;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: calc(125px + 3rem) 0 4.5rem;
+  min-height: clamp(320px, 42vw, 440px);
+  display: flex;
+  align-items: center;
   text-align: center;
   color: #fff;
 }
+.page-banner-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+}
+.page-banner-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(135deg, rgba(36, 45, 99, 0.86) 0%, rgba(26, 35, 64, 0.8) 100%);
+}
+.page-banner .site-shell {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+.page-banner--properties .page-banner-bg {
+  background-image: url('./image/banners/properties-hero.jpg');
+}
 .page-banner h1 {
-  font-family: "Playfair Display", Georgia, serif;
+  font-family: "Montserrat", system-ui, sans-serif;
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 600;
   margin-bottom: 0.75rem;
@@ -471,7 +498,7 @@ a.prop-card {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: "DM Sans", system-ui, sans-serif;
+  font-family: "Montserrat", system-ui, sans-serif;
   padding: 0.95rem 1.75rem;
   border-radius: 999px;
   font-weight: 700;
@@ -482,7 +509,11 @@ a.prop-card {
 }
 .fusion-btn-primary { background: #242d63; color: #fff; }
 .fusion-btn-primary:hover { background: #242d63; color: #fff; }
+.wa-float-btn { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 9998; width: 3.25rem; height: 3.25rem; border-radius: 50%; background: #25d366; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.65rem; box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45); transition: transform 0.25s ease, background 0.25s ease; text-decoration: none; }
+.wa-float-btn:hover { background: #1ebe57; color: #fff; transform: scale(1.06); }
+.scroll-reveal-img { overflow: hidden; }
   </style>
+  <link rel="stylesheet" href="./css/grasp-fonts.css" />
 </head>
 <body class="inner-page inner-page--banner bg-white font-sansBrand">
 
@@ -509,7 +540,9 @@ a.prop-card {
   </header>
 
   <!-- HERO SECTION -->
-  <section class="page-banner" aria-label="Properties">
+  <section class="page-banner page-banner--properties" aria-label="Properties">
+    <div class="page-banner-bg" aria-hidden="true"></div>
+    <div class="page-banner-overlay" aria-hidden="true"></div>
     <div class="site-shell">
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="index.html">Home</a>
@@ -522,14 +555,14 @@ a.prop-card {
   </section>
 
   <main class="page-main w-full max-w-full overflow-x-hidden">
-    <section class="page-section soft">
+    <section class="page-section soft" id="properties-section">
       <div class="site-shell">
-        <div class="text-center max-w-2xl mx-auto mb-8">
+        <div class="text-center max-w-2xl mx-auto mb-8 scroll-reveal-text">
           <p class="section-kicker mb-3">Portfolio</p>
           <h2 class="section-title">Featured <em>Projects</em></h2>
         </div>
-        <div class="prop-cards-grid" id="propertiesGrid">
-          <a href="nvg-seattle.html" class="prop-card" data-category="residential">
+        <div class="prop-cards-grid scroll-reveal-stagger" id="propertiesGrid">
+          <a href="nvg-seattle.html" class="prop-card scroll-reveal-item" data-category="residential">
             <div class="prop-card-media">
               <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80" alt="NVG Seattle" />
               <span class="prop-badge prop-badge-offer">Pre-Launch</span>
@@ -544,7 +577,7 @@ a.prop-card {
               </ul>
             </div>
           </a>
-          <a href="nvg-nippon.html" class="prop-card" data-category="residential">
+          <a href="nvg-nippon.html" class="prop-card scroll-reveal-item" data-category="residential">
             <div class="prop-card-media">
               <img src="./image/nvgnippon.png" alt="NVG Nippon — KIADB, Bangalore" />
               <span class="prop-badge prop-badge-offer">Pre-Launch</span>
@@ -559,7 +592,7 @@ a.prop-card {
               </ul>
             </div>
           </a>
-          <a href="buloke-sambhav.html" class="prop-card" data-category="residential">
+          <a href="buloke-sambhav.html" class="prop-card scroll-reveal-item" data-category="residential">
             <div class="prop-card-media">
               <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80" alt="Sambhav Buloke — North Bengaluru" />
               <span class="prop-badge prop-badge-offer">Rising Soon</span>
@@ -578,8 +611,8 @@ a.prop-card {
       </div>
     </section>
 
-    <div class="properties-cta">
-      <div class="site-shell">
+    <div class="properties-cta" id="properties-cta">
+      <div class="site-shell scroll-reveal-text">
         <p>Need help choosing? Our advisors will shortlist properties based on your budget and location.</p>
         <a href="contact.html" class="fusion-btn fusion-btn-primary">Get A Quote</a>
       </div>
@@ -755,5 +788,55 @@ a.prop-card {
 
 })();
   </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+(function () {
+  function initScrollAnimations() {
+    if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    var toggle = "play reverse play reverse";
+    var start = "top 80%";
+
+    function fromRight(target, trigger) {
+      gsap.fromTo(target, { x: 100, opacity: 0 }, {
+        x: 0, opacity: 1, duration: 0.9, ease: "power3.out",
+        scrollTrigger: { trigger: trigger, start: start, toggleActions: toggle }
+      });
+    }
+
+    function staggerUp(target, trigger) {
+      gsap.fromTo(target, { y: 50, opacity: 0 }, {
+        y: 0, opacity: 1, duration: 0.7, stagger: 0.15, ease: "power3.out",
+        scrollTrigger: { trigger: trigger, start: start, toggleActions: toggle }
+      });
+    }
+
+    if (document.querySelector("#properties-section")) {
+      fromRight("#properties-section .scroll-reveal-text", "#properties-section");
+      staggerUp("#properties-section .scroll-reveal-item", "#properties-section .scroll-reveal-stagger");
+    }
+
+    if (document.querySelector("#properties-cta")) {
+      fromRight("#properties-cta .scroll-reveal-text", "#properties-cta");
+    }
+
+    ScrollTrigger.refresh();
+  }
+
+  window.addEventListener("load", initScrollAnimations);
+  window.addEventListener("resize", function () {
+    if (typeof ScrollTrigger !== "undefined") ScrollTrigger.refresh();
+  });
+})();
+  </script>
+
+  <a href="https://wa.me/917996363331" target="_blank" rel="noopener noreferrer" class="wa-float-btn" aria-label="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
 </body>
 </html>
