@@ -2179,7 +2179,6 @@
             <div class="team-card-info">
               <h3>Mr Akshay Gangadhar</h3>
               <p class="team-card-role">Founder &amp; Managing Director</p>
-              <p class="team-card-meta"><i class="fa-solid fa-house" aria-hidden="true"></i> 120+ Properties</p>
               <p class="team-card-bio">Leading GRASP with a vision for transparent, premium real estate across Bangalore.</p>
             </div>
           </article>
@@ -2197,7 +2196,6 @@
             <div class="team-card-info">
               <h3>Mr Gokul Raj</h3>
               <p class="team-card-role">Co-Founder &amp; Strategy Lead</p>
-              <p class="team-card-meta"><i class="fa-solid fa-house" aria-hidden="true"></i> 95+ Properties</p>
               <p class="team-card-bio">Specialises in growth corridors and pre-launch investments across North Bengaluru.</p>
             </div>
           </article>
@@ -2215,7 +2213,6 @@
             <div class="team-card-info">
               <h3>Mr Sridhar</h3>
               <p class="team-card-role">Co-Founder &amp; Operations Head</p>
-              <p class="team-card-meta"><i class="fa-solid fa-house" aria-hidden="true"></i> 110+ Properties</p>
               <p class="team-card-bio">Ensures seamless project delivery, documentation clarity, and client satisfaction.</p>
             </div>
           </article>
@@ -2233,7 +2230,6 @@
             <div class="team-card-info">
               <h3>Mr Prashanth Jain</h3>
               <p class="team-card-role">Co-Founder &amp; Sales Director</p>
-              <p class="team-card-meta"><i class="fa-solid fa-house" aria-hidden="true"></i> 140+ Properties</p>
               <p class="team-card-bio">Guides buyers through luxury residential projects with over a decade of expertise.</p>
             </div>
           </article>
@@ -2251,7 +2247,6 @@
             <div class="team-card-info">
               <h3>Mr Rakshith</h3>
               <p class="team-card-role">Co-Founder &amp; Client Relations</p>
-              <p class="team-card-meta"><i class="fa-solid fa-house" aria-hidden="true"></i> 88+ Properties</p>
               <p class="team-card-bio">Builds lasting relationships through honest advice and end-to-end buyer support.</p>
             </div>
           </article>
@@ -2826,7 +2821,6 @@
     color: rgba(255, 255, 255, 0.9);
   }
 
-  .team-card-meta,
   .team-card-bio {
     margin: 0;
     max-height: 0;
@@ -2834,23 +2828,6 @@
     overflow: hidden;
     transform: translateY(10px);
     transition: opacity 0.4s ease, transform 0.4s ease, max-height 0.45s ease, margin 0.4s ease;
-  }
-
-  .team-card-meta {
-    display: flex;
-    align-items: center;
-    gap: 0.45rem;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.92);
-  }
-
-  .team-card-meta i {
-    font-size: 0.78rem;
-    opacity: 0.9;
-  }
-
-  .team-card-bio {
     font-size: 0.88rem;
     line-height: 1.65;
     color: rgba(255, 255, 255, 0.82);
@@ -2874,14 +2851,6 @@
 
   .team-card:hover .team-card-contact,
   .team-card:focus-within .team-card-contact {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .team-card:hover .team-card-meta,
-  .team-card:focus-within .team-card-meta {
-    margin-top: 0.85rem;
-    max-height: 2rem;
     opacity: 1;
     transform: translateY(0);
   }
@@ -2915,15 +2884,8 @@
       transform: translateY(0);
     }
 
-    .team-card-meta {
-      margin-top: 0.75rem;
-      max-height: none;
-      opacity: 1;
-      transform: translateY(0);
-    }
-
     .team-card-bio {
-      margin-top: 0.55rem;
+      margin-top: 0.65rem;
       max-height: none;
       opacity: 1;
       transform: translateY(0);
